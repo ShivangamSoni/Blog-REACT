@@ -1,0 +1,39 @@
+.header {
+  padding: 2rem 1rem;
+  border-bottom: 0.1rem solid #c3c3c3;
+}
+
+.logo {
+  text-align: center;
+}
+
+.logo > span {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 400;
+  transform: rotate(-90deg);
+}
+
+.navbar {
+  margin-top: 2rem;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.navbar a {
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  color: #000000;
+}
+
+.navbar a:hover {
+  text-decoration: 1px solid underline;
+}
