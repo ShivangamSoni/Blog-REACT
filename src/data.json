@@ -1,0 +1,57 @@
+{
+  "posts" : [
+    {
+      "id" : "1",
+      "category": "Technology",
+      "title": "JS Functions",
+      "authorId": "1",
+      "slug": "/post/shivangam-soni/js-functions"
+    },
+    {
+      "id" : "2",
+      "category": "programming",
+      "title": "JS Functions vs Arrow Functions",
+      "authorId": "2",
+      "slug": "/post/akhil-thakur/js-functions-vs-arrow-functions"
+    },
+    {
+      "id" : "3",
+      "category": "Travel",
+      "title": "My Trip to Manali",
+      "authorId": "1",
+      "slug": "/post/shivangam-soni/my-trip-to-manali"
+    },
+    {
+      "id" : "4",
+      "category": "Technology",
+      "title": "Photography Tips",
+      "authorId": "2",
+      "slug": "/post/akhil-thakur/photography-tips"
+    },
+    {
+      "id" : "5",
+      "category": "Bollywood",
+      "title": "Koi Naye Bakwas",
+      "authorId": "3",
+      "slug": "/post/mridul-walia/koi-naye-bakwas"
+    }
+  ],
+
+  "users" : [
+    {
+      "id": "1",
+      "name": "Shivangam Soni",
+      "email": "shivangamsoni99@gmail.com"
+    },
+    {
+      "id": "2",
+      "name": "Akhil thakur",
+      "email": "akneo@gmail.com"
+    },
+    {
+      "id": "3",
+      "name": "Mridula Walia",
+      "email": "walia728@gmail.com"
+    }
+  ]
+}

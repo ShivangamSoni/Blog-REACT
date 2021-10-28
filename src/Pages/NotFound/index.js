@@ -1,10 +1,12 @@
 import "./style.css";
-import errorImage from "../../Assets/404-Error.svg";
 
 const NotFound = () => {
   return (
     <div className="notFound">
-      <img alt="404 Page Not Found" src={errorImage} />
+      <div>
+        <h2 data="404">404</h2>
+        <p data="PAGE NOT FOUND">Page Not Found</p>
+      </div>
     </div>
   );
 };

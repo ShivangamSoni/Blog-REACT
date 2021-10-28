@@ -13,22 +13,22 @@ const Header = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/">Technology</Link>
+            <Link to="/category/technology">Technology</Link>
           </li>
           <li>
-            <Link to="/">Bollywood</Link>
+            <Link to="/category/bollywood">Bollywood</Link>
           </li>
           <li>
-            <Link to="/">Hollywood</Link>
+            <Link to="/category/hollywood">Hollywood</Link>
           </li>
           <li>
-            <Link to="/">Fitness</Link>
+            <Link to="/category/fitness">Fitness</Link>
           </li>
           <li>
-            <Link to="/">Food</Link>
+            <Link to="/category/fitness">Food</Link>
           </li>
           <li>
-            <Link to="/">Signup</Link>
+            <Link to="/signup">Signup</Link>
           </li>
         </ul>
       </nav>
