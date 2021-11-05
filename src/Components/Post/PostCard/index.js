@@ -6,8 +6,9 @@ const PostCard = (props) => {
     <div style={{ background: "chartreuse" }}>
       <h2>Post Card</h2>
       <Link to={slug}>
-        Image:
+        Image: {/*<img />*/}
         <h2>Title: {title}</h2>
+        <p>Content:</p>
         <span>Category: {category}</span>
       </Link>
     </div>
