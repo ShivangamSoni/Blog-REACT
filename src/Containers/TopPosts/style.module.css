@@ -1,0 +1,14 @@
+.topPosts h3 {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.topPosts h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 3ch;
+  height: 0.15rem;
+  background-color: #f08080;
+}

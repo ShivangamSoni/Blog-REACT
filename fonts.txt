@@ -1,0 +1,9 @@
+    font-family: 'Fira Sans', sans-serif;
+500
+
+    font-family: 'Montserrat', sans-serif;
+500
+700
+
+    font-family: 'Open Sans', sans-serif;
+400

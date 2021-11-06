@@ -1,0 +1,82 @@
+.blogCard {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  height: 100%;
+  position: relative;
+  isolation: isolate;
+  box-shadow: 0 0 0.8rem #0000001a;
+}
+
+.blogImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.blogImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.blogContent {
+  display: block;
+  padding: 0 1rem 2rem;
+}
+
+.title {
+  display: inline-block;
+  position: relative;
+  font-size: 1.7rem;
+  text-decoration: none;
+  outline: none;
+  color: #ffffff;
+  margin-bottom: 0.5em;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(to left, transparent 0%, transparent 50%, red 51%, red 100%);
+  background-repeat: no-repeat;
+  background-size: 200%;
+  background-position: top right;
+  transition: background-position 300ms linear;
+}
+
+.title:hover::after {
+  background-position: top left;
+}
+
+.content {
+  display: none;
+}
+
+.catDate {
+  font-weight: 500;
+  color: #fcfcfc91;
+  position: relative;
+}
+
+.catDate::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 5ch;
+  height: 0.1em;
+  background-color: #fcfcfc;
+}

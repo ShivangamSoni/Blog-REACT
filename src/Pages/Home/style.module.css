@@ -1,0 +1,16 @@
+.main {
+  padding: 0 0.5rem;
+  margin-bottom: 5rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 70% 29%;
+  column-gap: 1%;
+}
+
+@media screen and (max-width: 670px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}

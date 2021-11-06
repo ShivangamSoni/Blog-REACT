@@ -1,8 +1,8 @@
-import "./style.css";
+import style from "./style.module.css";
 
 const NotFound = () => {
   return (
-    <div className="notFound">
+    <div className={style.notFound}>
       <div>
         <h2 data="404">404</h2>
         <p data="PAGE NOT FOUND">Page Not Found</p>

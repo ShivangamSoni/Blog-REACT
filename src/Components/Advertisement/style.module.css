@@ -1,0 +1,7 @@
+.advt {
+  height: 600px;
+  border: 0.2rem solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

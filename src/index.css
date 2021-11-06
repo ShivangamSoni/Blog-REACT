@@ -1,15 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&family=Montserrat:wght@500;700&family=Open+Sans&display=swap");
+
+@font-face {
+  font-family: "Acumin Pro";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./Assets/Fonts/Acumin-RPro.woff") format("woff");
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+}
+html {
+  height: 100%;
 }
 
-html,
 body {
   margin: 0;
   height: 100%;
-  background-color: #ffffff;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

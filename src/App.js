@@ -1,22 +1,40 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./App.css";
-import Header from "./Components/Header";
-import Home from "./Pages/Home";
-import NotFound from "./Pages/NotFound";
+// Modules
+import { Route, Switch, Redirect } from "react-router";
+// Style
+import style from "./App.module.css";
+// Components
+import Header from "./Components/Header/index";
+// Pages
+import Home from "./Pages/Home/index";
+import Category from "./Pages/Category";
 import Post from "./Pages/Post/index";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/post/:slug" component={Post} />
-          <Route path="*" component={NotFound} />
-        </Switch>
-      </div>
-    </Router>
+    <div className={style.App}>
+      <Header />
+
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+
+        <Route path="/category">
+          <Category />
+        </Route>
+
+        <Route path="/post">
+          <Post />
+        </Route>
+
+        <Route path="/not-found">
+          <NotFound />
+        </Route>
+
+        <Redirect to="/not-found" />
+      </Switch>
+    </div>
   );
 }
 

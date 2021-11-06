@@ -1,0 +1,65 @@
+.blogCard {
+  display: grid;
+  grid-template-columns: 39% 59%;
+  column-gap: 2%;
+  background-color: hsl(0, 0%, 100%);
+  padding: 1rem 0;
+  border-top: 0.15rem solid hsl(0, 0%, 80%);
+}
+
+.blogImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blogImage img {
+  width: 100%;
+  height: 100%;
+}
+
+.blogContent {
+  display: grid;
+  grid-template-rows: auto auto;
+  row-gap: 0.2rem;
+}
+
+.title {
+  display: inline-block;
+  position: relative;
+  font-size: 1.7rem;
+  text-decoration: none;
+  outline: none;
+  color: hsl(0, 0%, 0%);
+  padding-top: 1rem;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(to left, transparent 0%, transparent 50%, red 51%, red 100%);
+  background-repeat: no-repeat;
+  background-size: 200%;
+  background-position: top right;
+  transition: background-position 300ms linear;
+}
+
+.title:hover::after {
+  background-position: top left;
+}
+
+.content {
+  display: none;
+}
+
+.category {
+  font-weight: 600;
+}
+
+.creationDate {
+  color: #3c3c3c;
+}

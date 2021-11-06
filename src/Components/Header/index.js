@@ -1,37 +1,22 @@
-import "./style.css";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import style from "./style.module.css";
+import Navbar from "../Navbar/index";
 
 const Header = () => {
+  const [navActive, setNavActive] = useState(false);
+
   return (
-    <header className="header">
-      <h1 className="logo">
-        <span>The</span> Siren
-      </h1>
-      <nav className="navbar">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/category/technology">Technology</Link>
-          </li>
-          <li>
-            <Link to="/category/bollywood">Bollywood</Link>
-          </li>
-          <li>
-            <Link to="/category/hollywood">Hollywood</Link>
-          </li>
-          <li>
-            <Link to="/category/fitness">Fitness</Link>
-          </li>
-          <li>
-            <Link to="/category/fitness">Food</Link>
-          </li>
-          <li>
-            <Link to="/signup">Signup</Link>
-          </li>
-        </ul>
-      </nav>
+    <header className={style.header}>
+      <div>
+        <Link to="/" className={style.brandLink}>
+          <h1 className={style.brand}>
+            <span>The</span> Siren
+          </h1>
+        </Link>
+        <span onClick={() => setNavActive(!navActive)} className={`${style.hamburger} ${navActive ? "fab fa-mixer" : "fas fa-bars"}`}></span>
+      </div>
+      <Navbar isActive={navActive} />
     </header>
   );
 };

@@ -1,17 +1,23 @@
-import PostCard from "../../Components/Post/PostCard";
-import data from "../../data.json";
-
-import "./style.css";
+import style from "./style.module.css";
+import FeaturePosts from "../../Containers/FeaturePosts";
+import LatestPosts from "../../Containers/LatestPosts";
+import LatestArticles from "../../Containers/LatestArticles";
+import SideBar from "../../Containers/SideBar";
+import LatestStories from "../../Containers/LatestStories";
 
 const Home = () => {
-  const { posts } = data;
-
   return (
-    <div>
-      <h1>Home</h1>
-      {posts.map((post) => (
-        <PostCard key={post.id} post={post} />
-      ))}
+    <div className={style.main}>
+      <FeaturePosts />
+
+      <LatestPosts />
+
+      <div className={style.content}>
+        <LatestArticles title={"Latest Articles"} />
+        <SideBar />
+      </div>
+
+      <LatestStories />
     </div>
   );
 };

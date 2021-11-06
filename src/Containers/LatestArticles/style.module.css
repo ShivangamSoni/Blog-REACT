@@ -1,0 +1,33 @@
+.latestArticles {
+  margin: 1rem auto;
+}
+
+.latestArticles h3 {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.latestArticles h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 3ch;
+  height: 0.15rem;
+  background-color: #f08080;
+}
+
+.load {
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  color: #a2a2a2;
+  padding-left: 1rem;
+  background-image: url("../../Assets/arrow.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top left;
+}

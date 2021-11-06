@@ -1,17 +1,8 @@
-import { useLocation } from "react-router-dom";
-import data from "../../data.json";
-import BlogPost from "../../Components/Post/BlogPost/index";
+import style from "./style.module.css";
 
-const Post = () => {
-  const { posts } = data;
-  const location = useLocation().pathname;
-  const post = posts.filter((post) => post.slug === location)[0];
-
-  return (
-    <div>
-      <BlogPost key={post.id} post={post} />
-    </div>
-  );
+const Post = (props) => {
+  console.log(props);
+  return <div className={style.container}>Post Page</div>;
 };
 
 export default Post;
