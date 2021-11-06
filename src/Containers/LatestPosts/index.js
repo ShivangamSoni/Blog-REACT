@@ -2,7 +2,9 @@ import style from "./style.module.css";
 import ImageTopCard from "../../Components/BlogCard/HOC/ImageTopCard";
 import BlogCard from "../../Components/BlogCard";
 
-const LatestPosts = () => {
+const LatestPosts = (props) => {
+  const { title } = props;
+
   const data = {
     id: 1,
     category: "Technology",
@@ -16,7 +18,7 @@ const LatestPosts = () => {
 
   return (
     <div className={style.latestPosts}>
-      <h3>The Latest</h3>
+      <h3>{title}</h3>
       <div className={style.container}>
         <ImageTopCard comp={BlogCard} data={data} />
         <ImageTopCard comp={BlogCard} data={data} />

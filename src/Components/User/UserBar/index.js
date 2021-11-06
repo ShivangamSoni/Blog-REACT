@@ -1,14 +1,17 @@
-import data from "../../../data.json";
+import style from "./style.module.css";
 
-const UserBar = (props) => {
-  const { users } = data;
-  const user = users.filter((user) => user.id === props.userId)[0];
+const UserBar = () => {
   return (
-    <div style={{ background: "dodgerblue" }}>
-      <h2>User Bar</h2>
-      <p>User ID: {user.id}</p>
-      <p>Name: {user.name}</p>
-      <p>Email: {user.email}</p>
+    <div className={style.container}>
+      <div className={style.image}>
+        <img src={require("../../../Assets/image.jpg").default} alt="Author" />
+      </div>
+      <div className={style.details}>
+        <h4>Author Name</h4>
+        <p>Post Date | Read Time</p>
+      </div>
+
+      <div className={style.social}>Social Icons</div>
     </div>
   );
 };

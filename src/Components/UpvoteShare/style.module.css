@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  margin: 2rem 0;
+  position: sticky;
+  top: 2rem;
+}
+
+.btn {
+  cursor: pointer;
+  appearance: none;
+  border: none;
+  outline: none;
+  padding-left: 21px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-position: top left;
+}
+
+.up {
+  background-image: url("../../Assets/upvote.svg");
+}
+
+.share {
+  background-image: url("../../Assets/share.svg");
+}

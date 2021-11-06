@@ -10,10 +10,10 @@ const Home = () => {
     <div className={style.main}>
       <FeaturePosts />
 
-      <LatestPosts />
+      <LatestPosts title="The Latest" />
 
       <div className={style.content}>
-        <LatestArticles title={"Latest Articles"} />
+        <LatestArticles title="Latest Articles" />
         <SideBar />
       </div>
 

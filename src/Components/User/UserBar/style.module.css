@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  padding: 0.5rem;
+  margin: 0.5rem auto;
+  border-radius: 1rem;
+  background-color: hsl(0, 1%, 97%);
+}
+
+.image {
+  width: 64px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.details {
+  padding-left: 0.5rem;
+}
+
+.details > p {
+  color: #a2a2a2;
+}
+
+.social {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+}
