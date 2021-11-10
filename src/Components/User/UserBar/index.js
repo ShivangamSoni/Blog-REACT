@@ -1,21 +1,33 @@
 import style from "./style.module.css";
 
 const UserBar = (props) => {
-  const { author, post } = props;
+  const { author, post, social } = props;
 
   return (
     <div className={style.container}>
       <div className={style.image}>
-        <img src={require("../../../Assets/image.jpg").default} alt="Author" />
+        <img src={require("../../../Assets/User.png").default} alt="Author" />
       </div>
       <div className={style.details}>
-        <h4>{author.name}</h4>
+        <span>
+          {social ? "" : "Written By"}
+          <h4>{author.name}</h4>
+        </span>
         <p>
           {post.creationTime} . {post.readTime} read
         </p>
       </div>
 
-      <div className={style.social}>Social Icons</div>
+      {social ? (
+        <div className={style.social}>
+          <i className={`fab fa-facebook-square ${style.icon}`}></i>
+          <i className={`fab fa-twitter-square ${style.icon}`}></i>
+          <i className={`fab fa-instagram-square ${style.icon}`}></i>
+          <i className={`fab fa-youtube-square ${style.icon}`}></i>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

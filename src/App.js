@@ -11,10 +11,14 @@ import Post from "./Pages/Post/index";
 import NotFound from "./Pages/NotFound";
 // Context
 import { DataProvider } from "./DataContext";
+import ScrollToTop from "./Utilities/ScrollToTop";
+import SignIn from "./Pages/Signin";
+import Register from "./Pages/Register";
 
 function App() {
   return (
     <div className={style.App}>
+      <ScrollToTop />
       <DataProvider>
         <Header />
 
@@ -24,6 +28,10 @@ function App() {
           <Route path="/category/:category" element={<Category />} />
 
           <Route path="/post/:author/:post" element={<Post />} />
+
+          <Route path="/signin" element={<SignIn />} />
+
+          <Route path="/register" element={<Register />} />
 
           <Route path="/*" element={<NotFound />} />
         </Routes>

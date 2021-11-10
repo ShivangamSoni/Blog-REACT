@@ -5,12 +5,16 @@ const BlogPost = (props) => {
   const { post, author } = props;
   return (
     <div className={style.container}>
-      <h2>{post.title}</h2>
-      <UserBar author={author} post={post} />
+      <h1 className={style.title}>{post.title}</h1>
+      <UserBar author={author} post={post} social={true} />
 
-      <div>Hero image</div>
+      <div className={style.heroImage}>
+        <img src={require("../../Assets/image.jpg").default} alt={post.title} />
+      </div>
 
-      <p>{post.content}</p>
+      <p className={style.content}>{post.content}</p>
+
+      <UserBar author={author} post={post} social={false} />
     </div>
   );
 };

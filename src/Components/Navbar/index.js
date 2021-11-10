@@ -12,18 +12,13 @@ const Navbar = (props) => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/category/technology" className={style.link}>
-            Technology
-          </NavLink>
-        </li>
-        <li>
           <NavLink to="/category/bollywood" className={style.link}>
             Bollywood
           </NavLink>
         </li>
         <li>
-          <NavLink to="/category/sports" className={style.link}>
-            Sports
+          <NavLink to="/category/technology" className={style.link}>
+            Technology
           </NavLink>
         </li>
         <li>
@@ -37,13 +32,8 @@ const Navbar = (props) => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/category/food" className={style.link}>
-            Food
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/signup" className={style.link}>
-            SignUp
+          <NavLink to="/signin" className={style.link}>
+            SignIn
           </NavLink>
         </li>
       </ul>

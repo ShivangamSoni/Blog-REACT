@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const BlogCard = (props) => {
   const style = props.style || require("./style.module.css");
   const { data } = props;
-  const content50 = props.content50;
 
   return (
     <div className={style.blogCard}>
@@ -17,7 +16,7 @@ const BlogCard = (props) => {
             {data.title}
           </Link>
         </h2>
-        <p className={style.content}>{content50 ? data.content.split(" ").slice(0, 49).join(" ") + "..." : data.content}</p>
+        <p className={style.content}>{data.content.split(" ").slice(0, 49).join(" ") + "..."}</p>
         <p className={style.catDate}>
           <span className={style.category}>{data.category}</span> / <span className={style.creationDate}>{data.creationTime}</span>
         </p>

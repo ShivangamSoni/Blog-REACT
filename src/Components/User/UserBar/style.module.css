@@ -30,7 +30,17 @@
 }
 
 .social {
+  cursor: pointer;
   position: absolute;
   top: 0.2rem;
   right: 0.2rem;
+}
+
+.icon {
+  font-size: 1.2em;
+  color: hsl(0, 0%, 70%);
+}
+
+.icon + .icon {
+  margin-left: 0.5em;
 }
