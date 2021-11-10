@@ -1,15 +1,16 @@
 import style from "./style.module.css";
 import UserBar from "../User/UserBar/index";
 
-const BlogPost = () => {
+const BlogPost = (props) => {
+  const { post, author } = props;
   return (
     <div className={style.container}>
-      <h2>Post Title</h2>
-      <UserBar />
+      <h2>{post.title}</h2>
+      <UserBar author={author} post={post} />
 
       <div>Hero image</div>
 
-      <p>Post Content</p>
+      <p>{post.content}</p>
     </div>
   );
 };

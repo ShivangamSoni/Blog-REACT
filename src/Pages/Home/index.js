@@ -4,16 +4,20 @@ import LatestPosts from "../../Containers/LatestPosts";
 import LatestArticles from "../../Containers/LatestArticles";
 import SideBar from "../../Containers/SideBar";
 import LatestStories from "../../Containers/LatestStories";
+import { useContext } from "react";
+import { DataContext } from "../../DataContext";
 
 const Home = () => {
+  const { posts } = useContext(DataContext);
+
   return (
     <div className={style.main}>
       <FeaturePosts />
 
-      <LatestPosts title="The Latest" />
+      <LatestPosts title="The Latest" posts={posts} />
 
       <div className={style.content}>
-        <LatestArticles title="Latest Articles" />
+        <LatestArticles title="Latest Articles" posts={posts} />
         <SideBar />
       </div>
 

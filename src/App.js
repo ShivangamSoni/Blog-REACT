@@ -1,5 +1,5 @@
 // Modules
-import { Route, Switch, Redirect } from "react-router";
+import { Route, Routes } from "react-router-dom";
 // Style
 import style from "./App.module.css";
 // Components
@@ -9,31 +9,25 @@ import Home from "./Pages/Home/index";
 import Category from "./Pages/Category";
 import Post from "./Pages/Post/index";
 import NotFound from "./Pages/NotFound";
+// Context
+import { DataProvider } from "./DataContext";
 
 function App() {
   return (
     <div className={style.App}>
-      <Header />
+      <DataProvider>
+        <Header />
 
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        <Route path="/category">
-          <Category />
-        </Route>
+          <Route path="/category/:category" element={<Category />} />
 
-        <Route path="/post">
-          <Post />
-        </Route>
+          <Route path="/post/:author/:post" element={<Post />} />
 
-        <Route path="/not-found">
-          <NotFound />
-        </Route>
-
-        <Redirect to="/not-found" />
-      </Switch>
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </DataProvider>
     </div>
   );
 }

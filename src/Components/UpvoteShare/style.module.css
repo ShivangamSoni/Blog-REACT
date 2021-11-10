@@ -14,11 +14,15 @@
   appearance: none;
   border: none;
   outline: none;
-  padding-left: 21px;
+  padding: 0.5rem 0 0.5rem 22px;
   background-color: transparent;
   background-repeat: no-repeat;
-  background-size: 18px 18px;
-  background-position: top left;
+  background-size: 20px 20px;
+  background-position: left center;
+}
+
+.btn:hover {
+  border-bottom: 0.1em solid hsl(210, 100%, 60%);
 }
 
 .up {

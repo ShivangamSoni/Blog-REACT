@@ -16,12 +16,14 @@
 .blogImage img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: bottom center;
 }
 
 .blogContent {
   display: grid;
   grid-template-rows: auto auto;
-  row-gap: 0.2rem;
+  row-gap: 0.5rem;
 }
 
 .title {
@@ -31,7 +33,6 @@
   text-decoration: none;
   outline: none;
   color: hsl(0, 0%, 0%);
-  padding-top: 1rem;
 }
 
 .title::after {
@@ -54,6 +55,10 @@
 
 .content {
   display: none;
+}
+
+.catDate {
+  margin-top: 1rem;
 }
 
 .category {
