@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { DataContext } from "../../DataContext";
 
 const Home = () => {
-  const { posts } = useContext(DataContext);
+  const { posts, mediaMatches } = useContext(DataContext);
 
   return (
     <div className={style.main}>
@@ -18,7 +18,7 @@ const Home = () => {
 
       <div className={style.content}>
         <LatestArticles title="Latest Articles" posts={posts} />
-        <SideBar />
+        {mediaMatches ? null : <SideBar />}
       </div>
 
       <LatestStories />

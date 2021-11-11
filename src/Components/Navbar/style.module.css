@@ -33,17 +33,9 @@
   background-image: linear-gradient(to bottom, transparent 0%, transparent 50%, hsl(35, 100%, 60%) 51%, hsl(35, 100%, 60%) 100%);
 }
 
-@media screen and (max-width: 670px) {
+@media screen and (max-width: 770px) {
   .linkList {
     flex-flow: column nowrap;
-  }
-
-  .nav {
-    display: none;
-  }
-
-  .nav.active {
-    display: block;
   }
 
   .link {

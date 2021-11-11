@@ -1,24 +1,32 @@
 import { Link } from "react-router-dom";
-// import style from "./style.module.css";
 
 const BlogCard = (props) => {
-  const style = props.style || require("./style.module.css");
-  const { data } = props;
+  // const style = props.style || require("./style.module.css");
+  const style = require("./style.module.css");
+  const propStyle = props.style;
+
+  const { data, displayImage = true, displayContent = true } = props;
 
   return (
-    <div className={style.blogCard}>
-      <div className={style.blogImage}>
-        <img src={require("../../Assets/image.jpg").default} alt={data.title} />
-      </div>
-      <div className={style.blogContent}>
+    <div className={propStyle?.blogCard || style.blogCard}>
+      {displayImage ? (
+        <div className={propStyle?.blogImage || style.blogImage}>
+          <img src={require("../../Assets/image.jpg").default} alt={data.title} />
+        </div>
+      ) : null}
+
+      <div className={propStyle?.blogContent || style.blogContent}>
         <h2>
-          <Link to={data.slug} className={style.title}>
+          <Link to={data.slug} className={propStyle?.title || style.title}>
             {data.title}
           </Link>
         </h2>
-        <p className={style.content}>{data.content.split(" ").slice(0, 49).join(" ") + "..."}</p>
-        <p className={style.catDate}>
-          <span className={style.category}>{data.category}</span> / <span className={style.creationDate}>{data.creationTime}</span>
+
+        {displayContent ? <p className={propStyle?.content || style.content}>{data.content.split(" ").slice(0, 49).join(" ") + "..."}</p> : null}
+
+        <p className={propStyle?.catDate || style.catDate}>
+          <span className={propStyle?.category || style.category}>{data.category}</span> /{" "}
+          <span className={propStyle?.creationDate || style.creationDate}>{data.creationTime}</span>
         </p>
       </div>
     </div>

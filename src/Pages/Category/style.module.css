@@ -4,7 +4,7 @@
   column-gap: 1%;
 }
 
-@media screen and (max-width: 670px) {
+@media screen and (max-width: 770px) {
   .container {
     grid-template-columns: 1fr;
   }

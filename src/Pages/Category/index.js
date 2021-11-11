@@ -8,15 +8,14 @@ import style from "./style.module.css";
 const Category = () => {
   const { category } = useParams();
 
-  const { posts } = useContext(DataContext);
+  const { posts, mediaMatches } = useContext(DataContext);
 
   const categoryPosts = posts.filter((post) => post.category.toLowerCase() === category);
-  console.log(categoryPosts);
 
   return (
     <div className={style.container}>
       {categoryPosts.length ? <LatestArticles title={category.toUpperCase()} posts={categoryPosts} /> : <h3>No Posts for Category: {category.toUpperCase()}</h3>}
-      <SideBar />
+      {mediaMatches ? null : <SideBar />}
     </div>
   );
 };

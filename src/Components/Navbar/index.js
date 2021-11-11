@@ -2,40 +2,45 @@ import { NavLink } from "react-router-dom";
 import style from "./style.module.css";
 
 const Navbar = (props) => {
-  // const linkClasses = (isActive) => `${style.link} ${isActive ? style.linkActive : ""}`;
+  const links = [
+    {
+      to: "/",
+      label: "Home",
+    },
+    {
+      to: "/category/bollywood",
+      label: "Bollywood",
+    },
+    {
+      to: "/category/technology",
+      label: "Technology",
+    },
+    {
+      to: "/category/hollywood",
+      label: "Hollywood",
+    },
+    {
+      to: "/category/fitness",
+      label: "Fitness",
+    },
+    {
+      to: "/signin",
+      label: "SignIn",
+    },
+  ];
+
+  const getLinkClasses = ({ isActive }) => `${style.link} ${isActive ? style.linkActive : ""}`;
+
   return (
-    <nav className={`${style.nav} ${props.isActive ? style.active : ""}`}>
+    <nav className={style.nav}>
       <ul className={style.linkList}>
-        <li>
-          <NavLink to="/" className={style.link}>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/category/bollywood" className={style.link}>
-            Bollywood
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/category/technology" className={style.link}>
-            Technology
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/category/hollywood" className={style.link}>
-            Hollywood
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/category/fitness" className={style.link}>
-            Fitness
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/signin" className={style.link}>
-            SignIn
-          </NavLink>
-        </li>
+        {links.map((link, index) => (
+          <li key={index}>
+            <NavLink to={link.to} className={getLinkClasses} onClick={props.toggleNav}>
+              {link.label}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );

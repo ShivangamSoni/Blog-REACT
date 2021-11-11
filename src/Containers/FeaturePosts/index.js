@@ -5,12 +5,12 @@ import { useContext } from "react";
 import { DataContext } from "../../DataContext";
 
 const FeaturePosts = (props) => {
-  const { posts } = useContext(DataContext);
-  console.log("Featured:\n", posts);
+  const { posts, mediaMatches } = useContext(DataContext);
+  const numOfPosts = mediaMatches ? 1 : 3;
 
   return (
     <div className={style.container}>
-      {posts.slice(0, 3).map((post) => (
+      {posts.slice(0, numOfPosts).map((post) => (
         <FeatureCard key={post.id} comp={BlogCard} data={post} />
       ))}
     </div>

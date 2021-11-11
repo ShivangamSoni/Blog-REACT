@@ -19,7 +19,7 @@
   grid-area: third;
 }
 
-@media screen and (max-width: 670px) {
+@media screen and (max-width: 770px) {
   .container {
     display: grid;
     grid-template-columns: 1fr;

@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./style.module.css";
 import Navbar from "../Navbar/index";
+import { DataContext } from "../../DataContext";
 
 const Header = () => {
-  const [navActive, setNavActive] = useState(false);
+  const [navActive, setNavActive] = useState(true);
+  const { mediaMatches } = useContext(DataContext);
+
+  const toggleNav = () => {
+    setNavActive(!navActive);
+  };
+
+  useEffect(() => {
+    setNavActive(!mediaMatches);
+  }, [mediaMatches]);
 
   return (
     <header className={style.header}>
@@ -14,9 +24,10 @@ const Header = () => {
             <span>The</span> Siren
           </h1>
         </Link>
-        <span onClick={() => setNavActive(!navActive)} className={`${style.hamburger} ${navActive ? "fab fa-mixer" : "fas fa-bars"}`}></span>
+        {mediaMatches ? <span onClick={toggleNav} className={`${style.hamburger} ${navActive ? "fab fa-mixer" : "fas fa-bars"}`}></span> : null}
       </div>
-      <Navbar isActive={navActive} />
+
+      {navActive ? <Navbar toggleNav={mediaMatches ? toggleNav : null} /> : null}
     </header>
   );
 };

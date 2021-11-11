@@ -19,6 +19,7 @@ function App() {
   return (
     <div className={style.App}>
       <ScrollToTop />
+
       <DataProvider>
         <Header />
 
