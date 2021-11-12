@@ -31,10 +31,11 @@
   .header div {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 
   .hamburger {
     cursor: pointer;
+    margin-right: 1rem;
   }
 }

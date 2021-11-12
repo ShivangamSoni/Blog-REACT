@@ -31,4 +31,35 @@
 
 .share {
   background-image: url("../../Assets/share.svg");
+  position: relative;
+}
+
+.copied .tooltipText {
+  transform: scale(1);
+}
+
+.tooltipText {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 0.5em 0;
+  background-color: #555;
+  color: #fff;
+  border-radius: 0.3em;
+  transform: scale(0);
+  transition: transform 300ms linear;
+}
+
+.tooltipText::before {
+  content: "";
+  position: absolute;
+  top: -0.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-bottom: 0.7em solid #555;
 }

@@ -26,7 +26,7 @@ const Post = () => {
         <BlogPost post={blogPost} author={blogAuthor} />
       </div>
 
-      {latestByAuthor.length === 0 || <LatestPosts title={`More From ${blogAuthor.name}`} posts={latestByAuthor} />}
+      <div className={style.foot}>{latestByAuthor.length === 0 || <LatestPosts title={`More From ${blogAuthor.name}`} posts={latestByAuthor} />}</div>
     </>
   );
 };

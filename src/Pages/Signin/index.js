@@ -3,7 +3,12 @@ import style from "./style.module.css";
 
 const SignIn = () => {
   return (
-    <form className={style.form}>
+    <form
+      className={style.form}
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <h2 className={style.title}>Welcome Back.</h2>
       <input type="email" placeholder="Registered Email" />
       <input type="password" placeholder="Password" />

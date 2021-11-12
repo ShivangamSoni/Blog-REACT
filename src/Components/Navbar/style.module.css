@@ -33,6 +33,29 @@
   background-image: linear-gradient(to bottom, transparent 0%, transparent 50%, hsl(35, 100%, 60%) 51%, hsl(35, 100%, 60%) 100%);
 }
 
+.btn {
+  appearance: none;
+  background-color: #fff;
+  text-decoration: none;
+  outline: 1px solid currentColor;
+  border: none;
+  color: #03a87c;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  transition: box-shadow 300ms linear;
+}
+
+.btn:hover {
+  box-shadow: 0 0 0.5em currentColor, 0 0 0.2em currentColor;
+  text-shadow: 0 0 1px currentColor;
+}
+
+.btnActive {
+  background-color: #03a87c;
+  color: #fff;
+}
+
 @media screen and (max-width: 770px) {
   .linkList {
     flex-flow: column nowrap;
@@ -43,7 +66,7 @@
   }
 
   .linkList li {
-    padding: 0.2rem 0 0;
+    padding: 0.2rem 0;
     width: 100%;
     border-top: 0.05rem solid hsl(0, 0%, 80%);
   }

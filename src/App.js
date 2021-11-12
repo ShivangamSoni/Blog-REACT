@@ -9,11 +9,16 @@ import Home from "./Pages/Home/index";
 import Category from "./Pages/Category";
 import Post from "./Pages/Post/index";
 import NotFound from "./Pages/NotFound";
-// Context
-import { DataProvider } from "./DataContext";
-import ScrollToTop from "./Utilities/ScrollToTop";
 import SignIn from "./Pages/Signin";
 import Register from "./Pages/Register";
+import UserProfile from "./Pages/UserProfile";
+import Write from "./Pages/Write";
+// Context
+import { DataProvider } from "./DataContext";
+// Utilities
+import AuthRoute from "./Routes/AuthRoute";
+import UnAuthRoute from "./Routes/UnAuthRoute";
+import ScrollToTop from "./Utilities/ScrollToTop";
 
 function App() {
   return (
@@ -30,12 +35,45 @@ function App() {
 
           <Route path="/post/:author/:post" element={<Post />} />
 
-          <Route path="/signin" element={<SignIn />} />
+          <Route
+            path="/signin"
+            element={
+              <UnAuthRoute>
+                <SignIn />
+              </UnAuthRoute>
+            }
+          />
 
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/register"
+            element={
+              <UnAuthRoute>
+                <Register />
+              </UnAuthRoute>
+            }
+          />
+
+          <Route
+            path="/profile"
+            element={
+              <AuthRoute>
+                <UserProfile />
+              </AuthRoute>
+            }
+          />
+
+          <Route
+            path="/write"
+            element={
+              <AuthRoute>
+                <Write />
+              </AuthRoute>
+            }
+          />
 
           <Route path="/*" element={<NotFound />} />
         </Routes>
+        {/* <AuthRoute path="/profile" element={<UserProfile />} /> */}
       </DataProvider>
     </div>
   );
