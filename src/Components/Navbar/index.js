@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { useContext } from "react/cjs/react.development";
+import { useContext } from "react";
 import { DataContext } from "../../DataContext";
 import style from "./style.module.css";
 
