@@ -1,0 +1,80 @@
+.form {
+  padding-top: 2rem;
+  width: 1000px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.formGroup {
+  margin: 0.5rem 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.5em;
+  align-items: center;
+}
+
+.deleteBtn,
+.imageBtn {
+  color: #333;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 0.1em solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteBtn {
+  width: 1.2rem;
+  height: 1.2rem;
+  font-size: 0.9rem;
+  color: hsl(350, 96%, 64%);
+}
+
+.headingInput {
+  font-size: 3rem;
+}
+
+.headingInput,
+.contentTextArea {
+  color: #333;
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+  border-left: 0.1rem solid currentColor;
+}
+
+.headingInput:focus,
+.contentTextArea:focus {
+  border-left: 0.15rem solid #03a87c;
+}
+
+.contentTextArea {
+  resize: none;
+  overflow: hidden;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.imageInput {
+  display: none;
+}
+
+.imageBtn {
+  font-size: 1.2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.btn {
+  appearance: none;
+  border: none;
+  outline: none;
+  background-color: #03a87c;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1rem;
+}
+
+.submitBtn {
+}
