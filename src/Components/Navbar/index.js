@@ -1,8 +1,13 @@
-import { NavLink } from "react-router-dom";
-import withAuth from "../../Authentication/withAuth";
+import { NavLink, useLocation } from "react-router-dom";
+import { useContext } from "react/cjs/react.development";
+import { DataContext } from "../../DataContext";
 import style from "./style.module.css";
 
-const Navbar = ({ isAuthenticated, ...props }) => {
+const Navbar = (props) => {
+  const { isAuthenticated, setAuthenticated } = useContext(DataContext);
+  const { pathname } = useLocation();
+  const isPostPage = pathname.includes("/post");
+
   const getLinkClasses = ({ isActive }) => `${style.link} ${isActive ? style.linkActive : ""}`;
   const getBtnClasses = ({ isActive }) => `${style.btn} ${isActive ? style.btnActive : ""}`;
 
@@ -10,37 +15,37 @@ const Navbar = ({ isAuthenticated, ...props }) => {
     {
       to: "/",
       label: "Home",
-      visible: true,
+      visible: !isPostPage,
       className: getLinkClasses,
     },
     {
       to: "/category/bollywood",
       label: "Bollywood",
-      visible: true,
+      visible: !isPostPage,
       className: getLinkClasses,
     },
     {
       to: "/category/technology",
       label: "Technology",
-      visible: true,
+      visible: !isPostPage,
       className: getLinkClasses,
     },
     {
       to: "/category/hollywood",
       label: "Hollywood",
-      visible: true,
+      visible: !isPostPage,
       className: getLinkClasses,
     },
     {
       to: "/category/fitness",
       label: "Fitness",
-      visible: true,
+      visible: !isPostPage,
       className: getLinkClasses,
     },
     {
       to: "/signin",
       label: "Sign In",
-      visible: !isAuthenticated,
+      visible: !isAuthenticated && !isPostPage,
       className: getBtnClasses,
     },
     {
@@ -52,20 +57,20 @@ const Navbar = ({ isAuthenticated, ...props }) => {
     {
       to: "/profile",
       label: "Profile",
-      visible: isAuthenticated,
-      className: getLinkClasses,
+      visible: isAuthenticated && !isPostPage,
+      className: getBtnClasses,
     },
     {
       to: "/write",
       label: "Write",
       visible: isAuthenticated,
-      className: getLinkClasses,
+      className: getBtnClasses,
     },
   ];
 
   return (
     <nav className={style.nav}>
-      <ul className={style.linkList}>
+      <ul className={`${style.linkList} ${isPostPage ? style.postPageLinkList : ""}`}>
         {links.map((link, index) =>
           link.visible ? (
             <li key={index}>
@@ -78,7 +83,7 @@ const Navbar = ({ isAuthenticated, ...props }) => {
 
         {isAuthenticated ? (
           <li>
-            <button type="button" className={`${style.btn}`} onClick={() => localStorage.removeItem("userId")}>
+            <button type="button" className={`${style.btn}`} onClick={() => setAuthenticated(false)}>
               Logout
             </button>
           </li>
@@ -88,4 +93,5 @@ const Navbar = ({ isAuthenticated, ...props }) => {
   );
 };
 
-export default withAuth(Navbar);
+export default Navbar;
+// export default withAuth(Navbar);

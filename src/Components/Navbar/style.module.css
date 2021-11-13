@@ -56,6 +56,10 @@
   color: #fff;
 }
 
+.postPageLinkList li {
+  padding: 0 0.2rem;
+}
+
 @media screen and (max-width: 770px) {
   .linkList {
     flex-flow: column nowrap;
@@ -69,5 +73,16 @@
     padding: 0.2rem 0;
     width: 100%;
     border-top: 0.05rem solid hsl(0, 0%, 80%);
+  }
+
+  .postPageLinkList {
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  .postPageLinkList li {
+    border: none;
+    margin: 0;
+    padding: 0 0.2rem;
   }
 }

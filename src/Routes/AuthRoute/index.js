@@ -1,8 +1,11 @@
 import { Navigate } from "react-router-dom";
-import withAuth from "../../Authentication/withAuth";
+import { useContext } from "react/cjs/react.development";
+import { DataContext } from "../../DataContext";
 
-const AuthRoute = ({ isAuthenticated, children }) => {
+const AuthRoute = ({ children }) => {
+  const { isAuthenticated } = useContext(DataContext);
+
   return isAuthenticated ? children : <Navigate to="/signin" replace={true} />;
 };
 
-export default withAuth(AuthRoute);
+export default AuthRoute;

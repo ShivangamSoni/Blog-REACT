@@ -23,6 +23,12 @@
   transform: rotate(-90deg) translate(0.4rem, 1rem);
 }
 
+.postPageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 @media screen and (max-width: 770px) {
   .header {
     padding: 1rem 0 0;

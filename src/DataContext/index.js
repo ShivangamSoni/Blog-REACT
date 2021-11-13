@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import useMediaQuery from "../Utilities/useMediaQuery";
 
 export const DataContext = createContext();
@@ -6,6 +6,8 @@ export const DataContext = createContext();
 export const DataProvider = (props) => {
   const mediaQuerySize = "(max-width: 770px)";
   const mediaMatches = useMediaQuery(mediaQuerySize);
+
+  const [isAuthenticated, setAuthenticated] = useState(false);
 
   const posts = [
     {
@@ -388,5 +390,5 @@ export const DataProvider = (props) => {
     },
   ];
 
-  return <DataContext.Provider value={{ posts, users, mediaMatches }}>{props.children}</DataContext.Provider>;
+  return <DataContext.Provider value={{ posts, users, mediaMatches, isAuthenticated, setAuthenticated }}>{props.children}</DataContext.Provider>;
 };
