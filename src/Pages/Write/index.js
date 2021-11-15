@@ -149,8 +149,6 @@ const Write = () => {
       content,
     };
 
-    console.log(newPost);
-
     setPost((prev) => {
       const newState = [...prev];
       newState.push(newPost);
@@ -177,7 +175,6 @@ const Write = () => {
   const getReadTime = () => {
     const wordCount = formData.reduce((accumulator, field) => {
       if (field.type !== "image" && field.type !== "break") {
-        console.log(field);
         accumulator += field.content.split(" ").length;
       }
       return accumulator;

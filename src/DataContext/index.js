@@ -408,22 +408,22 @@ export const DataProvider = (props) => {
       id: 0,
       name: "Test User",
       userName: "test_user",
-      email: "user@test",
-      password: "user",
+      email: "user@test.com",
+      password: "user@1234",
     },
     {
       id: 1,
       name: "Shivangam Soni",
       userName: "shivangam_soni",
       email: "shivangamsoni99@gmail.com",
-      password: "user",
+      password: "user@1234",
     },
     {
       id: 2,
       name: "Akhil thakur",
       userName: "akhil_thakur",
       email: "akneo@gmail.com",
-      password: "user",
+      password: "user@1234",
     },
   ]);
 
