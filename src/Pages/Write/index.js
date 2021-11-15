@@ -8,11 +8,24 @@ const Write = () => {
 
   const getInitialFormData = () => {
     const headingID = new Date().getTime();
+    const heroImageID = headingID + 1;
+    const paraID = heroImageID + 1;
 
     return [
       {
         id: headingID,
         type: "heading",
+        content: "",
+      },
+      {
+        id: heroImageID,
+        type: "image",
+        content: "",
+        src: "",
+      },
+      {
+        id: paraID,
+        type: "paragraph",
         content: "",
       },
     ];
@@ -82,8 +95,17 @@ const Write = () => {
   };
 
   const addSection = (type) => {
+    const noDuplicate = ["break", "sub-heading"];
+    if (noDuplicate.includes(type) && formData[formData.length - 1].type === type) return;
+
     const id = new Date().getTime();
-    let newField = { id, type, content: "" };
+    let newField = null;
+
+    if (type === "break") {
+      newField = { id, type };
+    } else {
+      newField = { id, type, content: "" };
+    }
 
     if (type === "image") {
       newField.src = "";
@@ -102,7 +124,8 @@ const Write = () => {
     e.preventDefault();
 
     const id = new Date().getTime();
-    const authorId = sessionStorage.getItem("userID");
+    const creationTime = new Date().toLocaleDateString();
+    const authorId = Number(sessionStorage.getItem("userID"));
 
     const title = formData[0].content
       .trim()
@@ -116,15 +139,17 @@ const Write = () => {
 
     const newPost = {
       id,
-      category: category,
+      category,
       title,
-      creationTime: id,
+      creationTime,
       authorId,
       readTime: getReadTime(),
       upVotes: 0,
       slug: getSlug(),
       content,
     };
+
+    console.log(newPost);
 
     setPost((prev) => {
       const newState = [...prev];
@@ -146,12 +171,13 @@ const Write = () => {
      * 4. replacing " " with "_"
      */
     const postName = formData[0].content.trim().toLowerCase().split("&").join("and").split(" ").join("_");
-    return `/${authorUserName}/${postName}`;
+    return `/post/${authorUserName}/${postName}`;
   };
 
   const getReadTime = () => {
     const wordCount = formData.reduce((accumulator, field) => {
-      if (field.type !== "image") {
+      if (field.type !== "image" && field.type !== "break") {
+        console.log(field);
         accumulator += field.content.split(" ").length;
       }
       return accumulator;
@@ -163,14 +189,14 @@ const Write = () => {
     return Math.ceil(wordCount / avgRS);
   };
 
-  const formFields = formData.map((field) => {
+  const formFields = formData.map((field, index) => {
     let element = null;
     const deleteBtn = <i className={`fas fa-times ${style.deleteBtn}`} data-id={field.id} onClick={handleDelete} title="Delete Section"></i>;
 
     switch (field.type) {
       case "heading":
         element = (
-          <div className={style.formGroup} key={field.id}>
+          <div className={`${style.formGroup} ${index !== 1 ? style.full : null}`} key={field.id}>
             <input value={field.content} onChange={handleInputChange} data-id={field.id} className={style.headingInput} type="text" placeholder="Title" required={true} />
           </div>
         );
@@ -185,23 +211,31 @@ const Write = () => {
         break;
       case "paragraph":
         element = (
-          <div className={style.formGroup} key={field.id}>
-            {deleteBtn}
+          <div className={`${style.formGroup} ${index === 2 ? style.full : null}`} key={field.id}>
+            {index !== 2 ? deleteBtn : null}
             <textarea value={field.content} onChange={handleContentChange} data-id={field.id} className={style.contentTextArea} placeholder="Paragraph"></textarea>
           </div>
         );
         break;
       case "image":
+        const btnText = index === 1 ? "Add Feature Image" : "Add Image";
         element = (
-          <div className={style.formGroup} key={field.id}>
-            {deleteBtn}
+          <div className={`${style.formGroup} ${index === 1 ? style.full : null}`} key={field.id}>
+            {index !== 1 ? deleteBtn : null}
             <div className={style.imgContainer}>
               {field.src !== "" ? <img src={field.src} alt={field.content} /> : null}
               <label className={style.imageBtn}>
-                {field.src === "" ? "Add Image" : "Update Image"}
+                {field.src === "" ? btnText : "Update Image"}
                 <input className={style.imageInput} type="file" onChange={handleImageChange} data-id={field.id} accept="image/*" required={true} />
               </label>
             </div>
+          </div>
+        );
+        break;
+      case "break":
+        element = (
+          <div className={style.formGroup} key={field.id}>
+            {deleteBtn} <hr className={style.sectionBreak} />
           </div>
         );
         break;
@@ -217,19 +251,19 @@ const Write = () => {
       <form className={style.form} autoComplete="off" onSubmit={handleSubmit}>
         <div className={style.categories}>
           <label className={style.categoryRadio}>
-            <input value="Bollywood" onChange={handleCategoryChange} type="radio" name="category" /> Bollywood
+            <input checked={category === "Bollywood"} value="Bollywood" onChange={handleCategoryChange} type="radio" name="category" required={true} /> Bollywood
           </label>
 
           <label className={style.categoryRadio}>
-            <input value="Technology" onChange={handleCategoryChange} type="radio" name="category" /> Technology
+            <input checked={category === "Technology"} value="Technology" onChange={handleCategoryChange} type="radio" name="category" /> Technology
           </label>
 
           <label className={style.categoryRadio}>
-            <input value="Hollywood" onChange={handleCategoryChange} type="radio" name="category" /> Hollywood
+            <input checked={category === "Hollywood"} value="Hollywood" onChange={handleCategoryChange} type="radio" name="category" /> Hollywood
           </label>
 
           <label className={style.categoryRadio}>
-            <input value="Fitness" onChange={handleCategoryChange} type="radio" name="category" /> Fitness
+            <input checked={category === "Fitness"} value="Fitness" onChange={handleCategoryChange} type="radio" name="category" /> Fitness
           </label>
         </div>
 
@@ -249,6 +283,9 @@ const Write = () => {
             </button>
             <button onClick={() => addSection("image")} type="button" className={style.addSectionBtn} title="Add a Image">
               <i className="far fa-image"></i>
+            </button>
+            <button onClick={() => addSection("break")} type="button" className={style.addSectionBtn} title="Add a Section Break">
+              <i className="fas fa-grip-lines"></i>
             </button>
           </div>
         </div>

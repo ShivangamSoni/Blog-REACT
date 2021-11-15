@@ -8,7 +8,7 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setAuthenticated } = useContext(DataContext);
+  const { setAuthenticated, users } = useContext(DataContext);
 
   const emailChange = (e) => {
     setEmail(e.target.value);
@@ -20,10 +20,12 @@ const SignIn = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (email === "user@test" && password === "user") {
+    if (email.trim() && password.trim()) {
+      const user = users.filter((data) => data.email === email)[0];
+
+      sessionStorage.setItem("userID", user.id);
+      sessionStorage.setItem("userName", user.userName);
       setAuthenticated(true);
-      sessionStorage.setItem("userID", 0);
-      sessionStorage.setItem("userName", "test_user");
     }
   };
 

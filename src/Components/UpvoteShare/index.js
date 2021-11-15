@@ -1,11 +1,25 @@
 import style from "./style.module.css";
 import abbreviateNumber from "../../Utilities/abbreviateNumber";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { DataContext } from "../../DataContext";
 
 const UpvoteShare = (props) => {
+  const { setPost } = useContext(DataContext);
   const [copied, setCopied] = useState(false);
 
   const { post } = props;
+
+  const handleUpVote = () => {
+    const id = post.id;
+    const currentUpVotes = post.upVotes;
+
+    setPost((prev) => {
+      const newState = [...prev];
+      const index = newState.findIndex((data) => data.id === id);
+      newState[index].upVotes = currentUpVotes + 1;
+      return newState;
+    });
+  };
 
   const shareLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -16,7 +30,7 @@ const UpvoteShare = (props) => {
 
   return (
     <div className={style.container}>
-      <button className={`${style.btn} ${style.up}`} type="button">
+      <button onClick={handleUpVote} className={`${style.btn} ${style.up}`} type="button">
         {abbreviateNumber(post.upVotes)} Claps
       </button>
 

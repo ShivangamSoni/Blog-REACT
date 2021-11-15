@@ -3,8 +3,17 @@
   margin: 1rem 20%;
 }
 
+.postContent {
+  margin-bottom: 2rem;
+}
+
 .title {
   margin-bottom: 1rem;
+}
+
+.subHeading {
+  margin-top: 1rem;
+  font-size: 2rem;
 }
 
 .heroImage {
@@ -18,11 +27,36 @@
   border-radius: inherit;
 }
 
-.content {
-  text-align: justify;
-  line-height: 2;
+.image {
+  text-align: center;
+  margin: 1rem auto;
+  /* box-shadow: ; */
 }
 
+.image img {
+  width: 80%;
+  border-radius: inherit;
+}
+
+.paragraph {
+  text-align: justify;
+  line-height: 2;
+  white-space: pre-line;
+}
+
+.sectionBreak {
+  border: none;
+  margin: 1rem 0;
+}
+
+.sectionBreak::after {
+  content: "...";
+  display: block;
+  color: #000;
+  font-size: 1.2rem;
+  letter-spacing: 1rem;
+  text-align: center;
+}
 @media screen and (max-width: 770px) {
   .container {
     width: 90%;

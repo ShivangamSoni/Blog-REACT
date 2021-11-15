@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { DataContext } from "../../DataContext";
 import style from "./style.module.css";
 
 const Register = () => {
+  const { setUser } = useContext(DataContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,6 +18,17 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
+    if (password.trim() === cPassword.trim()) {
+      const id = new Date().getTime();
+      const userName = name.split(" ").join("_");
+      const newUser = { id, name, userName, email, password };
+
+      setUser((prev) => {
+        const newState = [...prev];
+        newState.push(newUser);
+        return newState;
+      });
+    }
   };
 
   return (

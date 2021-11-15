@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 
 const BlogCard = (props) => {
-  // const style = props.style || require("./style.module.css");
   const style = require("./style.module.css");
   const propStyle = props.style;
 
   const { data, displayImage = true, displayContent = true } = props;
+
+  const content = data.content[2].content;
 
   return (
     <div className={propStyle?.blogCard || style.blogCard}>
@@ -22,7 +23,7 @@ const BlogCard = (props) => {
           </Link>
         </h2>
 
-        {displayContent ? <p className={propStyle?.content || style.content}>{data.content.split(" ").slice(0, 49).join(" ") + "..."}</p> : null}
+        {displayContent ? <p className={propStyle?.content || style.content}>{content.split(" ").slice(0, 49).join(" ") + "..."}</p> : null}
 
         <p className={propStyle?.catDate || style.catDate}>
           <span className={propStyle?.category || style.category}>{data.category}</span> /{" "}

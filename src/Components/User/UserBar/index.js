@@ -14,7 +14,7 @@ const UserBar = (props) => {
           <h4>{author.name}</h4>
         </span>
         <p>
-          {post.creationTime} . {post.readTime} read
+          {post.creationTime} . {post.readTime} min. read
         </p>
       </div>
 
