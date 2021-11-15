@@ -22,6 +22,8 @@ const SignIn = () => {
     e.preventDefault();
     if (email === "user@test" && password === "user") {
       setAuthenticated(true);
+      sessionStorage.setItem("userID", 0);
+      sessionStorage.setItem("userName", "test_user");
     }
   };
 

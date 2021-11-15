@@ -68,6 +68,11 @@ const Navbar = (props) => {
     },
   ];
 
+  const logout = (e) => {
+    sessionStorage.clear();
+    setAuthenticated(false);
+  };
+
   return (
     <nav className={style.nav}>
       <ul className={`${style.linkList} ${isPostPage ? style.postPageLinkList : ""}`}>
@@ -83,7 +88,7 @@ const Navbar = (props) => {
 
         {isAuthenticated ? (
           <li>
-            <button type="button" className={`${style.btn}`} onClick={() => setAuthenticated(false)}>
+            <button type="button" className={`${style.btn}`} onClick={logout}>
               Logout
             </button>
           </li>
