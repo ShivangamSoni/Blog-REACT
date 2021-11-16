@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { DataContext } from "../../DataContext";
+import { useNavigate } from "react-router-dom";
 import style from "./style.module.css";
 
 const Write = () => {
   const { setPost } = useContext(DataContext);
+
+  const navigation = useNavigate();
 
   const getInitialFormData = () => {
     const headingID = new Date().getTime();
@@ -137,6 +139,8 @@ const Write = () => {
     const content = [...formData];
     content[0].content = title;
 
+    const slug = getSlug();
+
     const newPost = {
       id,
       category,
@@ -145,7 +149,7 @@ const Write = () => {
       authorId,
       readTime: getReadTime(),
       upVotes: 0,
-      slug: getSlug(),
+      slug,
       content,
     };
 
@@ -157,6 +161,8 @@ const Write = () => {
 
     setFormData(getInitialFormData);
     setCategory("");
+
+    setTimeout(() => navigation(slug), 500);
   };
 
   const getSlug = () => {
@@ -182,7 +188,6 @@ const Write = () => {
 
     // Average Reading Speed
     const avgRS = 225;
-
     return Math.ceil(wordCount / avgRS);
   };
 

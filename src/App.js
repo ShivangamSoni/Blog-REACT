@@ -11,7 +11,7 @@ import Post from "./Pages/Post/index";
 import NotFound from "./Pages/NotFound";
 import SignIn from "./Pages/Signin";
 import Register from "./Pages/Register";
-import UserProfile from "./Pages/UserProfile";
+import Profile from "./Pages/Profile";
 import Write from "./Pages/Write";
 // Context
 import { DataProvider } from "./DataContext";
@@ -57,10 +57,12 @@ function App() {
             path="/profile"
             element={
               <AuthRoute>
-                <UserProfile />
+                <Profile />
               </AuthRoute>
             }
           />
+
+          <Route path="/profile/:authorName" element={<Profile />} />
 
           <Route
             path="/write"
@@ -73,7 +75,6 @@ function App() {
 
           <Route path="/*" element={<NotFound />} />
         </Routes>
-        {/* <AuthRoute path="/profile" element={<UserProfile />} /> */}
       </DataProvider>
     </div>
   );

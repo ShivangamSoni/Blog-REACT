@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import style from "./style.module.css";
 
 const UserBar = (props) => {
@@ -11,7 +12,11 @@ const UserBar = (props) => {
       <div className={style.details}>
         <span>
           {social ? "" : "Written By"}
-          <h4>{author.name}</h4>
+          <h4>
+            <Link to={`/profile/${author.userName}`} title="View User Profile">
+              {author.name}
+            </Link>
+          </h4>
         </span>
         <p>
           {post.creationTime} . {post.readTime} min. read

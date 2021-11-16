@@ -18,9 +18,11 @@ const LatestArticles = (props) => {
         ))}
       </div>
 
-      <button type="button" className={style.load} onClick={loadMore}>
-        Load More
-      </button>
+      {visible < posts.length ? (
+        <button type="button" className={style.load} onClick={loadMore}>
+          Load More
+        </button>
+      ) : null}
     </div>
   );
 };

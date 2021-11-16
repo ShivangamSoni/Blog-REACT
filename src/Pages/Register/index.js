@@ -102,7 +102,7 @@ const Register = () => {
     if (!validateForm()) return;
 
     const id = new Date().getTime();
-    const userName = name.split(" ").join("_");
+    const userName = name.trim().toLowerCase().split(" ").join("_");
     const newUser = { id, name, userName, email: email.toLowerCase(), password };
 
     setUser((prev) => {

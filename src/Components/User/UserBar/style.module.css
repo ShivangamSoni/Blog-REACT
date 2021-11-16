@@ -29,6 +29,21 @@
   color: #a2a2a2;
 }
 
+.details a {
+  text-decoration: none;
+  color: #333;
+  outline: none;
+  background-image: linear-gradient(to left, transparent 0%, transparent 50%, #03a87c 51%, #03a87c 100%);
+  background-size: 200% 2px;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  transition: background-position 350ms linear;
+}
+
+.details a:hover {
+  background-position: left bottom;
+}
+
 .social {
   cursor: pointer;
   position: absolute;

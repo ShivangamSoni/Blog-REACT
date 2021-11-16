@@ -3,7 +3,6 @@ import BlogCard from "../../Components/BlogCard";
 import style from "./style.module.css";
 import { useContext } from "react";
 import { DataContext } from "../../DataContext";
-// import ImageTopCard from "../../Components/BlogCard/HOC/ImageTopCard";
 
 const TopPosts = () => {
   const { posts } = useContext(DataContext);
