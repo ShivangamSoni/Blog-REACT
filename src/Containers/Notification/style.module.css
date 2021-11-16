@@ -1,0 +1,60 @@
+.container {
+  width: 450px;
+  max-width: 80%;
+  background-color: #ffdb9b;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 10px;
+  right: 0;
+  z-index: 100;
+  border-radius: 0.2rem 0 0 0.2rem;
+  border-left: 8px solid #ffa502;
+  overflow: hidden;
+  animation: slide 1000ms ease-in-out forwards;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.infoIcon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #ce8500;
+  font-size: 1.3rem;
+}
+
+.msg {
+  padding-left: 10px;
+  color: #ce8500;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background-color: #ffd080;
+  padding: 1.2rem 1rem;
+  transition: background-color 200ms linear;
+}
+
+.closeBtn:hover {
+  background-color: #ffc766;
+}
+
+.closeBtn i {
+  color: #ce8500;
+  font-size: 1.3rem;
+}

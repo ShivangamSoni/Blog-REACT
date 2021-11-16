@@ -42,7 +42,7 @@
   color: #ffffff;
   margin-bottom: 0.5em;
   cursor: pointer;
-  background-image: linear-gradient(hsl(210, 100%, 60%), hsl(210, 100%, 60%));
+  background-image: linear-gradient(#fff, #fff);
   background-position: 0% 100%;
   background-repeat: no-repeat;
   background-size: 0% 0.15rem;

@@ -29,7 +29,7 @@ export const DataProvider = (props) => {
           id: 1636970319699,
           type: "image",
           content: "Image 1",
-          src: require("../Assets/image.jpg").default,
+          src: "https://cdn.pixabay.com/photo/2016/10/14/19/21/canyon-1740973_960_720.jpg",
         },
         {
           id: 1636970319700,
@@ -69,7 +69,7 @@ export const DataProvider = (props) => {
           id: 1636970319699,
           type: "image",
           content: "Image 1",
-          src: require("../Assets/image.jpg").default,
+          src: "https://cdn.pixabay.com/photo/2018/05/04/07/55/snow-3373432_960_720.jpg",
         },
         {
           id: 1636970319700,
@@ -109,7 +109,7 @@ export const DataProvider = (props) => {
           id: 1636970319699,
           type: "image",
           content: "Image 1",
-          src: require("../Assets/image.jpg").default,
+          src: "https://cdn.pixabay.com/photo/2015/12/29/14/51/mountains-1112911_960_720.jpg",
         },
         {
           id: 1636970319700,
