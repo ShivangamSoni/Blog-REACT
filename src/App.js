@@ -1,5 +1,5 @@
 // Modules
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 // Style
 import style from "./App.module.css";
 // Components
@@ -73,7 +73,9 @@ function App() {
             }
           />
 
-          <Route path="/*" element={<NotFound />} />
+          <Route path="/not-found" element={<NotFound />} />
+
+          <Route path="/*" element={<Navigate to="/not-found" replace={true} />} />
         </Routes>
       </DataProvider>
     </div>

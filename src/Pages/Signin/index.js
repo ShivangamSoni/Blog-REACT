@@ -64,7 +64,6 @@ const SignIn = () => {
     const user = users.filter((data) => data.email === email.trim().toLowerCase())[0];
 
     if (!user || user.password !== password.trim()) {
-      console.log(email, password, user, email.trim().toLowerCase());
       setFormError("Either Email or Password is Incorrect");
       return;
     }

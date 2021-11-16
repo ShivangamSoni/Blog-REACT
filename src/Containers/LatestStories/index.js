@@ -14,9 +14,12 @@ const LatestStories = () => {
     <div className={style.latestStories}>
       <h3>Latest Stories</h3>
       <div className={style.container}>
-        {posts.slice(0, visible).map((post) => (
-          <NoImageCard key={post.id} comp={BlogCard} data={post} />
-        ))}
+        {[...posts]
+          .reverse()
+          .slice(0, visible)
+          .map((post) => (
+            <NoImageCard key={post.id} comp={BlogCard} data={post} />
+          ))}
       </div>
 
       {visible < posts.length ? (

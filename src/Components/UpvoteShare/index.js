@@ -4,19 +4,47 @@ import { useState, useContext } from "react";
 import { DataContext } from "../../DataContext";
 
 const UpvoteShare = (props) => {
-  const { setPost } = useContext(DataContext);
+  const { setPost, isAuthenticated, users, setUser } = useContext(DataContext);
   const [copied, setCopied] = useState(false);
 
   const { post } = props;
 
   const handleUpVote = () => {
+    if (!isAuthenticated) {
+      return;
+    }
+
+    const user = users.filter((u) => u.userName === sessionStorage.getItem("userName"))[0];
+    const slug = post.slug;
+
     const id = post.id;
-    const currentUpVotes = post.upVotes;
+    let newVote = post.upVotes;
+
+    if (user.reactions.includes(slug)) {
+      newVote -= 1;
+
+      setUser((prev) => {
+        const newState = [...prev];
+        const index = newState.findIndex((u) => u.userName === user.userName);
+        const newReactions = newState[index].reactions.filter((r) => r !== slug);
+        newState[index].reactions = newReactions;
+        return newState;
+      });
+    } else {
+      newVote += 1;
+
+      setUser((prev) => {
+        const newState = [...prev];
+        const index = newState.findIndex((u) => u.userName === user.userName);
+        newState[index].reactions.push(slug);
+        return newState;
+      });
+    }
 
     setPost((prev) => {
       const newState = [...prev];
       const index = newState.findIndex((data) => data.id === id);
-      newState[index].upVotes = currentUpVotes + 1;
+      newState[index].upVotes = newVote;
       return newState;
     });
   };

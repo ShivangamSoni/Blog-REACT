@@ -7,8 +7,9 @@ const UserBar = (props) => {
   return (
     <div className={style.container}>
       <div className={style.image}>
-        <img src={require("../../../Assets/User.png").default} alt="Author" />
+        <img src={author.image} alt={author.name} />
       </div>
+
       <div className={style.details}>
         <span>
           {social ? "" : "Written By"}

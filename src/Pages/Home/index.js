@@ -14,10 +14,10 @@ const Home = () => {
     <div className={style.main}>
       <FeaturePosts />
 
-      <LatestPosts title="The Latest" posts={posts} />
+      <LatestPosts title="The Latest" posts={[...posts].reverse()} />
 
       <div className={style.content}>
-        <LatestArticles title="Latest Articles" posts={posts} />
+        <LatestArticles title="Latest Articles" posts={[...posts].reverse()} />
         {mediaMatches ? null : <SideBar />}
       </div>
 

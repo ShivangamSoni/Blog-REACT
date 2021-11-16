@@ -7,7 +7,7 @@ const UserProfile = (props) => {
   return (
     <div className={style.container}>
       <div className={style.profileHead}>
-        <img className={style.profileImage} src={require("../../../Assets/User.png").default} alt="" />
+        <img className={style.profileImage} src={user.image} alt={user.name} />
       </div>
 
       <div className={style.userDetails}>

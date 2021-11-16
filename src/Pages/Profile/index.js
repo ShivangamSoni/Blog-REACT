@@ -14,7 +14,6 @@ const Profile = () => {
   const userName = paramsName || sessionName;
 
   const user = users.filter((u) => u.userName === userName)[0];
-  const footerName = `${user.name}'s Posts`;
 
   let latestByUser = null;
   if (user) {
@@ -27,10 +26,10 @@ const Profile = () => {
         <>
           <UserProfile user={user} numPosts={latestByUser.length} />
 
-          <div className={style.foot}>{latestByUser.length === 0 || <LatestPosts title={footerName} posts={latestByUser} loading={true} />}</div>
+          <div className={style.foot}>{latestByUser.length === 0 || <LatestPosts title={`${user.name}'s Posts`} posts={latestByUser} loading={true} />}</div>
         </>
       ) : (
-        <Navigate to="/" />
+        <Navigate to="/not-found" replace={true} />
       )}
     </div>
   );

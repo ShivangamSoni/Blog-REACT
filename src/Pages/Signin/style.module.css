@@ -3,7 +3,8 @@
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  height: 80%;
+  min-height: 80%;
+  margin: 2rem auto;
 }
 
 .formGroup {

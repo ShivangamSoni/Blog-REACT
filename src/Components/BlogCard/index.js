@@ -7,12 +7,13 @@ const BlogCard = (props) => {
   const { data, displayImage = true, displayContent = true } = props;
 
   const content = data.content[2].content;
+  const image = data.content[1];
 
   return (
     <div className={propStyle?.blogCard || style.blogCard}>
       {displayImage ? (
         <div className={propStyle?.blogImage || style.blogImage}>
-          <img src={require("../../Assets/image.jpg").default} alt={data.title} />
+          <img src={image.src} alt={image.content} />
         </div>
       ) : null}
 

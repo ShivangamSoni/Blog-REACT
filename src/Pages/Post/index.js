@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useParams } from "react-router";
+import { useParams, Navigate } from "react-router";
 import BlogPost from "../../Components/BlogPost";
 import UpvoteShare from "../../Components/UpvoteShare";
 import LatestPosts from "../../Containers/LatestPosts";
@@ -13,20 +13,29 @@ const Post = () => {
 
   const blogPost = posts.find((postData) => postData.slug === `/post/${author}/${post}`);
 
-  const blogAuthor = users.find((user) => user.id === blogPost.authorId);
-
-  const latestByAuthor = posts.filter((post) => post.authorId === blogAuthor.id && post.id !== blogPost.id);
+  let blogAuthor = null;
+  let latestByAuthor = null;
+  if (blogPost) {
+    blogAuthor = users.find((user) => user.id === blogPost.authorId);
+    latestByAuthor = posts.filter((post) => post.authorId === blogAuthor.id && post.id !== blogPost.id);
+  }
 
   return (
     <>
-      <div className={style.container}>
-        <div className={style.upShareContainer}>
-          <UpvoteShare post={blogPost} />
-        </div>
-        <BlogPost post={blogPost} author={blogAuthor} />
-      </div>
+      {blogPost !== undefined ? (
+        <>
+          <div className={style.container}>
+            <div className={style.upShareContainer}>
+              <UpvoteShare post={blogPost} />
+            </div>
+            <BlogPost post={blogPost} author={blogAuthor} />
+          </div>
 
-      <div className={style.foot}>{latestByAuthor.length === 0 || <LatestPosts title={`More From ${blogAuthor.name}`} posts={latestByAuthor} />}</div>
+          <div className={style.foot}>{latestByAuthor.length === 0 || <LatestPosts title={`More From ${blogAuthor.name}`} posts={latestByAuthor} />}</div>
+        </>
+      ) : (
+        <Navigate to="/not-found" replace={true} />
+      )}
     </>
   );
 };
