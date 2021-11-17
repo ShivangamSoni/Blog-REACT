@@ -4,13 +4,13 @@ const BlogCard = (props) => {
   const style = require("./style.module.css");
   const propStyle = props.style;
 
-  const { data, displayImage = true, displayContent = true } = props;
+  const { data, displayImage = true, displayContent = true, i } = props;
 
   const content = data.content[2].content;
   const image = data.content[1];
 
   return (
-    <div className={propStyle?.blogCard || style.blogCard}>
+    <div className={propStyle?.blogCard || style.blogCard} data-id={i}>
       {displayImage ? (
         <div className={propStyle?.blogImage || style.blogImage}>
           <img src={image.src} alt={image.content} />

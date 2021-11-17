@@ -1,7 +1,9 @@
 import style from "./style.module.css";
 
 const ImageTopCard = (props) => {
-  return <props.comp data={props.data} style={style} />;
+  const { displayContent, index } = props;
+
+  return <props.comp data={props.data} style={style} displayContent={displayContent} i={index} />;
 };
 
 export default ImageTopCard;

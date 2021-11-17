@@ -1,7 +1,7 @@
 .blogCard {
   display: block;
   background-color: hsl(0, 0%, 100%);
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   padding: 0.5rem;
   height: 550px;
   position: relative;
@@ -45,7 +45,7 @@
   outline: none;
   color: #ffffff;
   cursor: pointer;
-  background-image: linear-gradient(hsl(210, 100%, 60%), hsl(210, 100%, 60%));
+  background-image: linear-gradient(#f08080, #f08080);
   background-position: 0% 100%;
   background-repeat: no-repeat;
   background-size: 0% 0.08em;
@@ -63,6 +63,17 @@
 
 .catDate {
   font-weight: 500;
-  color: #ffffff;
+  color: #ffffffb3;
   margin-top: 5rem;
+}
+
+.category {
+  font-weight: 600;
+  color: #ffffffb3;
+}
+
+.creationDate {
+  color: #ffffffb3;
+  font-family: "Acumin Pro", sans-serif;
+  font-weight: 300;
 }

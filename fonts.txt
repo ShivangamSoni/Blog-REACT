@@ -7,3 +7,5 @@
 
     font-family: 'Open Sans', sans-serif;
 400
+
+    font-family: 'Acumin Pro', sans-serif;

@@ -24,7 +24,7 @@ const Profile = () => {
     <div>
       {user !== undefined ? (
         <>
-          <UserProfile user={user} numPosts={latestByUser.length} />
+          <UserProfile user={user} posts={latestByUser} />
 
           <div className={style.foot}>{latestByUser.length === 0 || <LatestPosts title={`${user.name}'s Posts`} posts={latestByUser} loading={true} />}</div>
         </>

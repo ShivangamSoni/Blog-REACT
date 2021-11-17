@@ -1,5 +1,6 @@
 .latestStories {
-  margin: 1rem auto;
+  margin: 1rem auto 0;
+  padding-bottom: 2rem;
 }
 
 .latestStories h3 {
@@ -29,8 +30,8 @@
 
 .container > div {
   margin-bottom: 1rem;
-  border-left: 0.1rem solid hsl(0, 0%, 80%);
-  border-right: 0.1rem solid hsl(0, 0%, 80%);
+  border-left: 2px solid hsl(0, 0%, 80%);
+  border-right: 2px solid hsl(0, 0%, 80%);
 }
 
 .load {
@@ -41,11 +42,15 @@
   background-color: transparent;
   text-transform: uppercase;
   color: #a2a2a2;
-  padding-left: 2rem;
+  padding-left: 1rem;
   background-image: url("../../Assets/arrow-right.svg");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 0.8rem 1.2rem;
   background-position: top left;
+}
+
+.load:hover {
+  color: #f08080;
 }
 
 @media screen and (max-width: 770px) {
@@ -55,8 +60,12 @@
     row-gap: 1rem;
   }
 
-  .container > div + div {
+  .container > div {
     border-left: none;
-    border-top: 0.15rem solid hsl(0, 0%, 80%);
+    border-right: none;
+  }
+
+  .container > div + div {
+    border-top: 2px solid hsl(0, 0%, 80%);
   }
 }

@@ -11,6 +11,8 @@
   display: grid;
   grid-template-rows: auto auto;
   row-gap: 0.5rem;
+  font-family: "Open Sans", sans-serif;
+  color: #908d8d;
 }
 
 .title {
@@ -21,7 +23,7 @@
   outline: none;
   color: hsl(0, 0%, 0%);
   cursor: pointer;
-  background-image: linear-gradient(hsl(210, 100%, 60%), hsl(210, 100%, 60%));
+  background-image: linear-gradient(#95ebff, #95ebff);
   background-position: 0% 100%;
   background-repeat: no-repeat;
   background-size: 0% 0.1rem;
@@ -36,6 +38,7 @@
 .catDate {
   font-size: 0.8rem;
   margin-top: 1rem;
+  color: #404040;
 }
 
 .category {
@@ -44,4 +47,6 @@
 
 .creationDate {
   color: #3c3c3c;
+  font-family: "Acumin Pro", sans-serif;
+  font-weight: 300;
 }

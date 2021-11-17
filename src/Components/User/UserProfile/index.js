@@ -2,7 +2,12 @@ import style from "./style.module.css";
 import abbreviateNumber from "../../../Utilities/abbreviateNumber";
 
 const UserProfile = (props) => {
-  const { user, numPosts } = props;
+  const { user, posts } = props;
+
+  const numPosts = posts.length;
+  const numUpVotes = posts.reduce((res, post) => {
+    return res + post.upVotes;
+  }, 0);
 
   return (
     <div className={style.container}>
@@ -21,6 +26,11 @@ const UserProfile = (props) => {
         <div className={style.stats}>
           <div className={style.statNumber}>{abbreviateNumber(numPosts)}</div>
           <div className={style.statType}>Posts</div>
+        </div>
+
+        <div className={style.stats}>
+          <div className={style.statNumber}>{abbreviateNumber(numUpVotes)}</div>
+          <div className={style.statType}>UP Votes</div>
         </div>
       </div>
     </div>

@@ -46,7 +46,7 @@
   transform: translateY(-50%);
   cursor: pointer;
   background-color: #ffd080;
-  padding: 1.2rem 1rem;
+  padding: 1rem 1rem;
   transition: background-color 200ms linear;
 }
 

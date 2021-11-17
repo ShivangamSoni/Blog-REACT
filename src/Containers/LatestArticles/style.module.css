@@ -17,6 +17,10 @@
   background-color: #f08080;
 }
 
+.container > div {
+  border-top: 2px solid #f0f0f0;
+}
+
 .load {
   cursor: pointer;
   appearance: none;
@@ -28,6 +32,10 @@
   padding-left: 1rem;
   background-image: url("../../Assets/arrow.svg");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 1rem 1rem;
   background-position: top left;
+}
+
+.load:hover {
+  color: #f08080;
 }

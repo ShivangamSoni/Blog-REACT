@@ -6,6 +6,8 @@ import SideBar from "../../Containers/SideBar";
 import LatestStories from "../../Containers/LatestStories";
 import { useContext } from "react";
 import { DataContext } from "../../DataContext";
+import HeroCard from "../../Components/BlogCard/HOC/HeroCard";
+import BlogCard from "../../Components/BlogCard";
 
 const Home = () => {
   const { posts, mediaMatches } = useContext(DataContext);
@@ -18,7 +20,9 @@ const Home = () => {
 
       <div className={style.content}>
         <LatestArticles title="Latest Articles" posts={[...posts].reverse()} />
-        {mediaMatches ? null : <SideBar />}
+
+        {mediaMatches ? null : <SideBar order={2} />}
+        <HeroCard data={posts[0]} comp={BlogCard} />
       </div>
 
       <LatestStories />

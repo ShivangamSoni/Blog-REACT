@@ -8,6 +8,7 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   row-gap: 1rem;
+  font-family: "Open Sans", sans-serif;
 }
 
 .content {

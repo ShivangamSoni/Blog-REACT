@@ -2,7 +2,7 @@ import style from "./style.module.css";
 import abbreviateNumber from "../../Utilities/abbreviateNumber";
 import { useState, useContext } from "react";
 import { DataContext } from "../../DataContext";
-import Notification from "../../Containers/Notification";
+import Notification from "../Notification";
 
 // React Share
 import { FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton, TwitterIcon, TwitterShareButton } from "react-share";

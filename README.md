@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# The Siren
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a Blogging Website, Created Using REACT & Modular CSS.
 
-## Available Scripts
+## Project Structure
 
-In the project directory, you can run:
+I've divided the entire project into Pages, Containers & Components.
 
-### `yarn start`
+## Pages
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Home
+- Category
+- Post
+- Profile
+- Register
+- Sign In
+- Write
+- Not Found
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Containers
 
-### `yarn test`
+- Featured Posts
+- Latest Articles
+- Latest Posts
+- Latest Stories
+- Side Bar
+- Top Posts
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Components
 
-### `yarn build`
+- Header
+- Navbar
+- Blog Cards:
+  - Blog Card
+  - Feature Card
+  - Hero Card
+  - Image Top Card
+  - No Image Card
+  - Side Bar Card
+- Blog Post
+- User Bar
+- User Profile
+- UpVote Share
+- Notification
+- Advertisement
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Routes
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+These are Components that determine Routes depending upon the current state of User i.e.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If the User is Authenticated they shouldn't be able to access Login or Register Pages since they are already Authenticated.
 
-### `yarn eject`
+User who are not Authenticated should be redirected to Login Page if they try to access any Restricted Areas of the Website Like Blog Writer.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Auth Route
+- Un Auth Route
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Utilities
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+These are some Custom Hooks & functions to perform certain Functions regularly
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- abbreviateNumber: To abbreviate Large Number like 1000 becomes 1K.
+- ScrollToTop: Scrolls the View to Top when a new Page id Loaded.
+- useMediaQuery: Check for specified Media Query. Used for Responsive Component Rendering.

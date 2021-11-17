@@ -88,7 +88,7 @@ const Navbar = (props) => {
 
         {isAuthenticated ? (
           <li>
-            <button type="button" className={`${style.btn}`} onClick={logout}>
+            <button type="button" className={`${style.btn} ${style.logout}`} onClick={logout}>
               Logout
             </button>
           </li>

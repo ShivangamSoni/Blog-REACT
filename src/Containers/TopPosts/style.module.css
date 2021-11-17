@@ -1,6 +1,10 @@
+.topPosts {
+  margin-top: 2rem;
+}
+
 .topPosts h3 {
   position: relative;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem;
 }
 
 .topPosts h3::after {
@@ -11,4 +15,25 @@
   width: 3ch;
   height: 0.15rem;
   background-color: #f08080;
+}
+
+.content > div {
+  position: relative;
+}
+
+.content > div::after {
+  content: attr(data-id);
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translate(0, -50%);
+  color: #f0f0f0;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.content > div:nth-child(1)::after {
+  top: 100%;
+  right: 20px;
+  transform: translate(0, -100%);
 }
