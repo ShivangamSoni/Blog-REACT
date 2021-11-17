@@ -4,7 +4,7 @@ import style from "./style.module.css";
 
 const LatestArticles = (props) => {
   const { title, posts } = props;
-  const [visible, setVisible] = useState(4);
+  const [visible, setVisible] = useState(6);
 
   const loadMore = () => setVisible((prevState) => prevState + 4);
 

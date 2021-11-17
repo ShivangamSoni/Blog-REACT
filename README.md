@@ -59,6 +59,6 @@ User who are not Authenticated should be redirected to Login Page if they try to
 
 These are some Custom Hooks & functions to perform certain Functions regularly
 
-- abbreviateNumber: To abbreviate Large Number like 1000 becomes 1K.
-- ScrollToTop: Scrolls the View to Top when a new Page id Loaded.
-- useMediaQuery: Check for specified Media Query. Used for Responsive Component Rendering.
+- abbreviateNumber: To abbreviate Large Number like 1000 becomes 1K
+- ScrollToTop: Scrolls the View to Top when a new Page is Loaded
+- useMediaQuery: Check for specified Media Query. Used for Responsive Component Rendering
