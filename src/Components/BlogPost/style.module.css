@@ -4,7 +4,7 @@
 }
 
 .postContent {
-  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
 
 .title {
@@ -42,6 +42,8 @@
   text-align: justify;
   line-height: 2;
   white-space: pre-line;
+  text-indent: 10ch;
+  margin: 0.5rem 0 1rem;
 }
 
 .sectionBreak {
@@ -57,9 +59,10 @@
   letter-spacing: 1rem;
   text-align: center;
 }
+
 @media screen and (max-width: 770px) {
   .container {
     width: 90%;
-    margin: 1rem auto;
+    margin: 1rem auto 0;
   }
 }

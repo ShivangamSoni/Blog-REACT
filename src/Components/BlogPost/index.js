@@ -1,5 +1,6 @@
 import style from "./style.module.css";
 import UserBar from "../User/UserBar/index";
+import Tags from "../Tags";
 
 const BlogPost = (props) => {
   const { post, author } = props;
@@ -55,6 +56,8 @@ const BlogPost = (props) => {
         </div>
 
         {postFields}
+
+        <Tags tags={post.tags} />
       </div>
 
       <UserBar author={author} post={post} social={false} />

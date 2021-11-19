@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { DataContext } from "../../DataContext";
 import { useNavigate } from "react-router-dom";
+import CreatableSelect from "react-select/creatable";
 import style from "./style.module.css";
 
 const Write = () => {
@@ -38,6 +39,30 @@ const Write = () => {
   const [category, setCategory] = useState("");
 
   const [optionMenu, setOptionMenu] = useState(false);
+
+  const [tagInput, setTagInput] = useState("");
+  const [selectedTags, setSelectedTags] = useState([]);
+
+  const handleTagChange = (selectedOptions) => {
+    setSelectedTags(selectedOptions);
+  };
+  const handleTagInputChange = (inputValue) => {
+    setTagInput(inputValue);
+  };
+  const handleTagKeyUp = (e) => {
+    if (!tagInput) return;
+
+    if (e.key === "Enter" || e.key === "Tab") {
+      const label = tagInput;
+      setSelectedTags((prev) => {
+        const newState = [...prev];
+        newState.push({ value: newState.length + 1, label });
+        return newState;
+      });
+      setTagInput("");
+      e.preventDefault();
+    }
+  };
 
   const handleInputChange = (e) => {
     const input = e.target;
@@ -125,6 +150,8 @@ const Write = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!selectedTags.length) return;
+
     const id = new Date().getTime();
     const creationTime = new Date().toLocaleDateString();
     const authorId = Number(sessionStorage.getItem("userID"));
@@ -151,6 +178,7 @@ const Write = () => {
       upVotes: 0,
       slug,
       content,
+      tags: selectedTags,
     };
 
     setPost((prev) => {
@@ -267,6 +295,21 @@ const Write = () => {
           <label className={style.categoryRadio}>
             <input checked={category === "Fitness"} value="Fitness" onChange={handleCategoryChange} type="radio" name="category" /> Fitness
           </label>
+        </div>
+
+        <div className={style.tags}>
+          <CreatableSelect
+            components={{ DropdownIndicator: null }}
+            inputValue={tagInput}
+            value={selectedTags}
+            onInputChange={handleTagInputChange}
+            onKeyDown={handleTagKeyUp}
+            onChange={handleTagChange}
+            isClearable
+            isMulti
+            menuIsOpen={false}
+            placeholder="Enter Appropriate Tags (Add At Least One Tag)"
+          />
         </div>
 
         {formFields}

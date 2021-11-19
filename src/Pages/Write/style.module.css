@@ -179,3 +179,7 @@
   letter-spacing: 1rem;
   text-align: center;
 }
+
+.tags {
+  margin: 1rem auto;
+}
