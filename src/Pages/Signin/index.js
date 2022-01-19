@@ -1,7 +1,9 @@
-import { useState, useContext, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { DataContext } from "../../DataContext";
 import style from "./style.module.css";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { login } from "../../REDUX/Site/ActionCreator";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -10,7 +12,7 @@ const SignIn = () => {
   const [passwordError, setPasswordError] = useState("");
   const [formError, setFormError] = useState("");
 
-  const { setAuthenticated, users } = useContext(DataContext);
+  const dispatch = useDispatch();
 
   const emailChange = (e) => setEmail(e.target.value);
 
@@ -56,21 +58,22 @@ const SignIn = () => {
     return true;
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) return;
 
-    const user = users.filter((data) => data.email === email.trim().toLowerCase())[0];
-
-    if (!user || user.password !== password.trim()) {
-      setFormError("Either Email or Password is Incorrect");
-      return;
+    try {
+      const { data } = await axios.post("http://127.0.0.1:7000/api/v1/user/login", { email, password });
+      if (data.success) {
+        localStorage.setItem("token", data.token);
+        dispatch(login());
+      } else {
+        setFormError(data.message);
+      }
+    } catch (e) {
+      setFormError(e.response.data.message);
     }
-
-    sessionStorage.setItem("userID", user.id);
-    sessionStorage.setItem("userName", user.userName);
-    setAuthenticated(true);
   };
 
   useEffect(() => {

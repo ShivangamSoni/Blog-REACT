@@ -7,14 +7,14 @@ const UserBar = (props) => {
   return (
     <div className={style.container}>
       <div className={style.image}>
-        <img src={author.image} alt={author.name} />
+        <img src={require("../../../Assets/User.png").default} alt={author.name} />
       </div>
 
       <div className={style.details}>
         <span>
           {social ? "" : "Written By"}
           <h4>
-            <Link to={`/profile/${author.userName}`} title="View User Profile">
+            <Link to={`/profile/${author.id}`} title="View User Profile">
               {author.name}
             </Link>
           </h4>

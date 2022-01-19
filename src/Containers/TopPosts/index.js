@@ -1,12 +1,13 @@
 import SideBarCard from "../../Components/BlogCard/HOC/SideBarCard";
 import BlogCard from "../../Components/BlogCard";
 import style from "./style.module.css";
-import { useContext } from "react";
-import { DataContext } from "../../DataContext";
 import ImageTopCard from "../../Components/BlogCard/HOC/ImageTopCard";
 
+// Redux
+import { useSelector } from "react-redux";
+
 const TopPosts = () => {
-  const { posts } = useContext(DataContext);
+  const posts = useSelector((state) => state.blogs.blogs);
 
   return (
     <div className={style.topPosts}>

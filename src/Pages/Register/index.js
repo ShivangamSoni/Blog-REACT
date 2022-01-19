@@ -1,20 +1,18 @@
-import { useContext } from "react";
+import axios from "axios";
 import { useState, useEffect, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { DataContext } from "../../DataContext";
 import style from "./style.module.css";
 
 const Register = () => {
-  const { setUser, users } = useContext(DataContext);
   const navigate = useNavigate();
 
-  const [image, setImage] = useState({ src: null, type: "" });
+  // const [image, setImage] = useState({ src: null, type: "" });
   const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
-  const [imageError, setImageError] = useState("");
+  // const [imageError, setImageError] = useState("");
   const [nameError, setNameError] = useState("");
   const [userNameError, setUserNameError] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -23,6 +21,7 @@ const Register = () => {
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
 
+  /*
   const imageChange = (e) => {
     const input = e.target;
     const image = input.files[0];
@@ -41,12 +40,14 @@ const Register = () => {
       return newState;
     });
   };
+  */
   const nameChange = (e) => setName(e.target.value);
   const userNameChange = (e) => setUserName(e.target.value);
   const emailChange = (e) => setEmail(e.target.value);
   const passwordChange = (e) => setPassword(e.target.value);
   const cPasswordChange = (e) => setCPassword(e.target.value);
 
+  /*
   const validateImage = useCallback(() => {
     if (!image.type) return;
 
@@ -59,6 +60,7 @@ const Register = () => {
 
     return imageErrorMsg === "";
   }, [image]);
+  */
 
   const validateName = useCallback(() => {
     if (!name.trim()) return;
@@ -124,7 +126,7 @@ const Register = () => {
     return cPasswordErrorMsg === "";
   }, [password, cPassword]);
 
-  const validateForm = () => {
+  const validateForm = async () => {
     if (!name.trim() || !userName.trim() || !email.trim() || !password.trim() || !cPassword.trim()) {
       setFormError("All Fields are Necessary");
       return false;
@@ -135,45 +137,56 @@ const Register = () => {
       return false;
     }
 
-    let user = users.findIndex((u) => u.userName === userName.trim());
-    if (user !== -1) {
-      setFormError("Username Already Registered");
+    try {
+      await axios.get("http://127.0.0.1:7000/api/v1/user/verify/username", {
+        params: {
+          username: userName,
+        },
+      });
+
+      await axios.get("http://127.0.0.1:7000/api/v1/user/verify/email", {
+        params: {
+          email,
+        },
+      });
+
+      setFormError("");
+      return true;
+    } catch (e) {
+      setFormError(e.response.data.message);
       return false;
     }
-
-    user = users.findIndex((u) => u.email === email.toLowerCase());
-    if (user !== -1) {
-      setFormError(`Email Already registered`);
-      return false;
-    }
-
-    setFormError("");
-    return true;
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
+    const valid = await validateForm();
+    if (!valid) return;
 
-    const id = new Date().getTime();
-    const newUser = { id, name, userName: userName.trim(), email: email.toLowerCase(), password, image: image.src, reactions: [] };
+    const newUser = { name, email, username: userName, password };
 
-    setUser((prev) => {
-      const newState = [...prev];
-      newState.push(newUser);
-      return newState;
-    });
+    try {
+      const {
+        data: { success },
+      } = await axios.post("http://127.0.0.1:7000/api/v1/user/register", newUser, { headers: { "Content-Type": "application/json" } });
 
-    setFormSuccess("Registered Successfully");
-    setTimeout(() => {
-      navigate("/signin");
-    }, 1000);
+      if (success) {
+        setFormSuccess("Registered Successfully");
+        setTimeout(() => {
+          navigate("/signin");
+        }, 1000);
+      }
+    } catch (e) {
+      setFormError(e.response.data.message);
+    }
   };
 
+  /*
   useEffect(() => {
     validateImage();
   }, [image, validateImage]);
+  */
 
   useEffect(() => {
     validateName();
@@ -201,7 +214,7 @@ const Register = () => {
       {formError ? <span className={style.error}>{formError}</span> : null}
       {formSuccess ? <span className={style.success}>{formSuccess}</span> : null}
 
-      <div>
+      {/* <div>
         <div className={style.imgContainer}>
           {image.src ? <img src={image.src} alt={name} /> : null}
           <label className={style.imageBtn}>
@@ -210,7 +223,7 @@ const Register = () => {
           </label>
         </div>
         {imageError ? <span className={style.error}>{imageError}</span> : null}
-      </div>
+      </div> */}
 
       <div className={style.formGroup}>
         <input type="text" value={name} onChange={nameChange} placeholder="Name" />

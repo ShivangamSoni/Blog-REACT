@@ -1,60 +1,70 @@
 import style from "./style.module.css";
 import abbreviateNumber from "../../Utilities/abbreviateNumber";
-import { useState, useContext } from "react";
-import { DataContext } from "../../DataContext";
-import Notification from "../Notification";
+import { useState } from "react";
 
 // React Share
 import { FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton, TwitterIcon, TwitterShareButton } from "react-share";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { loginToVote, logout, sessionExpired } from "../../REDUX/Site/ActionCreator";
+import { fetchBlogById } from "../../REDUX/Blogs/ActionCreator";
 
-const UpvoteShare = (props) => {
-  const { setPost, isAuthenticated, users, setUser } = useContext(DataContext);
+const UpvoteShare = () => {
+  const { isAuthenticated } = useSelector((state) => state.site);
+  const dispatch = useDispatch();
+
   const [shareActive, setShareActive] = useState(false);
-  const [showNotification, setShowNotification] = useState(false);
-
   const url = window.location.href;
 
-  const { post } = props;
+  const post = useSelector((state) => state.blogs.active.blog);
 
-  const handleUpVote = () => {
+  const handleUpVote = async () => {
     if (!isAuthenticated) {
-      setShowNotification(true);
+      dispatch(loginToVote());
       return;
     }
 
-    const user = users.filter((u) => u.userName === sessionStorage.getItem("userName"))[0];
-    const slug = post.slug;
+    try {
+      const token = localStorage.getItem("token");
+      const {
+        data: { count },
+      } = await axios.put(
+        "http://127.0.0.1:7000/api/v1/user/vote",
+        { blogId: post.id },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
 
-    const id = post.id;
-    let newVote = post.upVotes;
+      const {
+        data: { success },
+      } = await axios.put(
+        `http://127.0.0.1:7000/api/v1/blogs/vote/${post.id}`,
+        { count },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
 
-    if (user.reactions.includes(slug)) {
-      newVote -= 1;
-
-      setUser((prev) => {
-        const newState = [...prev];
-        const index = newState.findIndex((u) => u.userName === user.userName);
-        const newReactions = newState[index].reactions.filter((r) => r !== slug);
-        newState[index].reactions = newReactions;
-        return newState;
-      });
-    } else {
-      newVote += 1;
-
-      setUser((prev) => {
-        const newState = [...prev];
-        const index = newState.findIndex((u) => u.userName === user.userName);
-        newState[index].reactions.push(slug);
-        return newState;
-      });
+      if (success) {
+        dispatch(fetchBlogById(post.id));
+      }
+    } catch (e) {
+      console.log(e.response.data);
+      if (e.response.data.message === "Token Expired") {
+        localStorage.removeItem("token");
+        dispatch(logout());
+        dispatch(sessionExpired());
+      } else {
+        console.log(e);
+      }
     }
-
-    setPost((prev) => {
-      const newState = [...prev];
-      const index = newState.findIndex((data) => data.id === id);
-      newState[index].upVotes = newVote;
-      return newState;
-    });
   };
 
   const toggleShareLink = () => {
@@ -63,7 +73,6 @@ const UpvoteShare = (props) => {
 
   return (
     <div className={style.container}>
-      {showNotification && <Notification closeHandler={() => setShowNotification(false)} />}
       <button onClick={handleUpVote} className={`${style.btn} ${style.up}`} type="button">
         {abbreviateNumber(post.upVotes)} Claps
       </button>

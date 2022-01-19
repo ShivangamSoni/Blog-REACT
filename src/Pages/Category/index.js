@@ -1,14 +1,16 @@
-import { useContext } from "react";
 import { useParams } from "react-router";
 import LatestArticles from "../../Containers/LatestArticles";
 import SideBar from "../../Containers/SideBar";
-import { DataContext } from "../../DataContext";
 import style from "./style.module.css";
+import { useSelector } from "react-redux";
 
 const Category = () => {
   const { category } = useParams();
 
-  const { posts, mediaMatches } = useContext(DataContext);
+  const {
+    posts,
+    site: { mediaMatches },
+  } = useSelector((state) => ({ posts: state.blogs.blogs, site: state.site }));
 
   const categoryPosts = posts.filter((post) => post.category.toLowerCase() === category);
 

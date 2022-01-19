@@ -1,23 +1,24 @@
 import style from "./style.module.css";
 import abbreviateNumber from "../../../Utilities/abbreviateNumber";
+import { useSelector } from "react-redux";
 
 const UserProfile = (props) => {
-  const { user, posts } = props;
+  const { user, latestByUser } = useSelector((state) => state.blogs.active);
 
-  const numPosts = posts.length;
-  const numUpVotes = posts.reduce((res, post) => {
+  const numPosts = latestByUser.length;
+  const numUpVotes = latestByUser.reduce((res, post) => {
     return res + post.upVotes;
   }, 0);
 
   return (
     <div className={style.container}>
       <div className={style.profileHead}>
-        <img className={style.profileImage} src={user.image} alt={user.name} />
+        <img className={style.profileImage} src={require("../../../Assets/User.png").default} alt={user.name} />
       </div>
 
       <div className={style.userDetails}>
         <p className={style.name}>
-          {user.name} <span className={style.userName}>({user.userName})</span>
+          {user.name} <span className={style.userName}>({user.username})</span>
         </p>
         <p className={style.email}>{user.email}</p>
       </div>

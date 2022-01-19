@@ -1,36 +1,38 @@
-import { useContext } from "react";
-import { Navigate, useParams } from "react-router";
+import { useEffect } from "react";
+import { useParams } from "react-router";
 import UserProfile from "../../Components/User/UserProfile";
 import LatestPosts from "../../Containers/LatestPosts";
-import { DataContext } from "../../DataContext";
 import style from "./style.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchLoggedInUser, fetchUserById } from "../../REDUX/Blogs/ActionCreator";
 
 const Profile = () => {
-  const { posts, users } = useContext(DataContext);
+  const { authorId } = useParams();
+  const { isAuthenticated, activeUser, latestByUser } = useSelector((state) => ({
+    isAuthenticated: state.site.isAuthenticated,
+    activeUser: state.blogs.active.user,
+    latestByUser: state.blogs.active.latestByUser,
+  }));
 
-  const { authorName: paramsName } = useParams();
-  const sessionName = sessionStorage.getItem("userName");
+  const dispatch = useDispatch();
 
-  const userName = paramsName || sessionName;
-
-  const user = users.filter((u) => u.userName === userName)[0];
-
-  let latestByUser = null;
-  if (user) {
-    latestByUser = posts.filter((post) => post.authorId === user.id);
-  }
+  useEffect(() => {
+    if (!authorId && isAuthenticated) {
+      dispatch(fetchLoggedInUser());
+    } else {
+      dispatch(fetchUserById(authorId));
+    }
+  }, [isAuthenticated, authorId, dispatch]);
 
   return (
     <div>
-      {user !== undefined ? (
+      {Object.keys(activeUser).length ? (
         <>
-          <UserProfile user={user} posts={latestByUser} />
+          <UserProfile />
 
-          <div className={style.foot}>{latestByUser.length === 0 || <LatestPosts title={`${user.name}'s Posts`} posts={latestByUser} loading={true} />}</div>
+          <div className={style.foot}>{latestByUser.length === 0 || <LatestPosts title={`${activeUser.name}'s Posts`} posts={latestByUser} loading={true} />}</div>
         </>
-      ) : (
-        <Navigate to="/not-found" replace={true} />
-      )}
+      ) : null}
     </div>
   );
 };

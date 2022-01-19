@@ -1,9 +1,10 @@
 import style from "./style.module.css";
 import UserBar from "../User/UserBar/index";
 import Tags from "../Tags";
+import { useSelector } from "react-redux";
 
-const BlogPost = (props) => {
-  const { post, author } = props;
+const BlogPost = () => {
+  const { post, author } = useSelector((state) => ({ post: state.blogs.active.blog, author: state.blogs.active.user }));
 
   const heroImage = post.content[1];
 

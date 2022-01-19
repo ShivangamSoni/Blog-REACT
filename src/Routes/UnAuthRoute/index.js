@@ -1,9 +1,8 @@
 import { Navigate } from "react-router-dom";
-import { useContext } from "react";
-import { DataContext } from "../../DataContext";
+import { useSelector } from "react-redux";
 
 const UnAuthRoute = ({ children }) => {
-  const { isAuthenticated } = useContext(DataContext);
+  const { isAuthenticated } = useSelector((state) => state.site);
 
   return !isAuthenticated ? children : <Navigate to="/" replace={true} />;
 };

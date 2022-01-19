@@ -19,7 +19,7 @@ const BlogCard = (props) => {
 
       <div className={propStyle?.blogContent || style.blogContent}>
         <h2 title={data.title}>
-          <Link to={data.slug} className={propStyle?.title || style.title}>
+          <Link to={`/post/${data.id}`} className={propStyle?.title || style.title}>
             {data.title.split(" ").length > 3 ? data.title.split(" ").slice(0, 3).join(" ") + "..." : data.title}
           </Link>
         </h2>

@@ -1,12 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import style from "./style.module.css";
 import Navbar from "../Navbar/index";
-import { DataContext } from "../../DataContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [navActive, setNavActive] = useState(true);
-  const { mediaMatches } = useContext(DataContext);
+  const { mediaMatches } = useSelector((state) => state.site);
 
   const { pathname } = useLocation();
   const isPostPage = pathname.includes("/post");

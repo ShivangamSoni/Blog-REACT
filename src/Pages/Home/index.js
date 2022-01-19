@@ -4,13 +4,13 @@ import LatestPosts from "../../Containers/LatestPosts";
 import LatestArticles from "../../Containers/LatestArticles";
 import SideBar from "../../Containers/SideBar";
 import LatestStories from "../../Containers/LatestStories";
-import { useContext } from "react";
-import { DataContext } from "../../DataContext";
-import HeroCard from "../../Components/BlogCard/HOC/HeroCard";
-import BlogCard from "../../Components/BlogCard";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  const { posts, mediaMatches } = useContext(DataContext);
+  const {
+    posts,
+    site: { mediaMatches },
+  } = useSelector((state) => ({ posts: state.blogs.blogs, site: state.site }));
 
   return (
     <div className={style.main}>
@@ -22,7 +22,6 @@ const Home = () => {
         <LatestArticles title="Latest Articles" posts={[...posts].reverse()} />
 
         {mediaMatches ? null : <SideBar order={2} />}
-        <HeroCard data={posts[0]} comp={BlogCard} />
       </div>
 
       <LatestStories />

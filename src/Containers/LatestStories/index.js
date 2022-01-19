@@ -1,11 +1,13 @@
 import style from "./style.module.css";
 import NoImageCard from "../../Components/BlogCard/HOC/NoImageCard";
 import BlogCard from "../../Components/BlogCard";
-import { useContext, useState } from "react";
-import { DataContext } from "../../DataContext";
+import { useState } from "react";
+
+// Redux
+import { useSelector } from "react-redux";
 
 const LatestStories = () => {
-  const { posts } = useContext(DataContext);
+  const posts = useSelector((state) => state.blogs.blogs);
   const [visible, setVisible] = useState(3);
 
   const loadMore = () => setVisible((prevState) => prevState + 3);

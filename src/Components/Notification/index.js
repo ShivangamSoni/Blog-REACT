@@ -1,16 +1,23 @@
 import style from "./style.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { hideNotification } from "../../REDUX/Site/ActionCreator";
 
-const Notification = (props) => {
-  const { closeHandler } = props;
+const Notification = () => {
+  const { show, text } = useSelector((state) => state.site.notification);
+  const dispatch = useDispatch();
+
+  const close = () => dispatch(hideNotification());
 
   return (
-    <div className={style.container}>
-      <i className={`fas fa-exclamation-circle ${style.infoIcon}`}></i>
-      <span className={style.msg}>Please Login to Clap for the Post</span>
-      <span className={style.closeBtn} onClick={closeHandler}>
-        <i className="fas fa-times"></i>
-      </span>
-    </div>
+    show && (
+      <div className={style.container}>
+        <i className={`fas fa-exclamation-circle ${style.infoIcon}`}></i>
+        <span className={style.msg}>{text}</span>
+        <span className={style.closeBtn} onClick={close}>
+          <i className="fas fa-times"></i>
+        </span>
+      </div>
+    )
   );
 };
 

@@ -1,10 +1,12 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { useContext } from "react";
-import { DataContext } from "../../DataContext";
 import style from "./style.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { logout as logoutAction } from "../../REDUX/Site/ActionCreator";
 
 const Navbar = (props) => {
-  const { isAuthenticated, setAuthenticated } = useContext(DataContext);
+  const { isAuthenticated } = useSelector((state) => state.site);
+  const dispatch = useDispatch();
+
   const { pathname } = useLocation();
   const isPostPage = pathname.includes("/post");
 
@@ -60,18 +62,15 @@ const Navbar = (props) => {
       visible: isAuthenticated && !isPostPage,
       className: getBtnClasses,
     },
-    {
-      to: "/write",
-      label: "Write",
-      visible: isAuthenticated,
-      className: getBtnClasses,
-    },
+    // {
+    //   to: "/write",
+    //   label: "Write",
+    //   visible: isAuthenticated,
+    //   className: getBtnClasses,
+    // },
   ];
 
-  const logout = (e) => {
-    sessionStorage.clear();
-    setAuthenticated(false);
-  };
+  const logout = (e) => dispatch(logoutAction());
 
   return (
     <nav className={style.nav}>
@@ -99,4 +98,3 @@ const Navbar = (props) => {
 };
 
 export default Navbar;
-// export default withAuth(Navbar);
