@@ -5,7 +5,7 @@ import { logout, sessionExpired } from "../Site/ActionCreator";
 export const fetchBlogs = () => {
   return async (dispatch) => {
     // const url = "http://127.0.0.1/api/v1/blogs";
-    const url = "https://shivi-blog-node.herokuapp.com/api/v1/blogs";
+    const url = "https://shivi-blog-node.herokuapp.com:7000/api/v1/blogs";
 
     try {
       const {
