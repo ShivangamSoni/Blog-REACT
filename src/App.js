@@ -41,7 +41,7 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(setMediaMatch());
+    dispatch(setMediaMatch(mediaMatches));
   }, [dispatch, mediaMatches]);
 
   return (

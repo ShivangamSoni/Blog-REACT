@@ -4,6 +4,7 @@ import style from "./style.module.css";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login } from "../../REDUX/Site/ActionCreator";
+import BASE_URL from "../../Utilities/API";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -64,7 +65,7 @@ const SignIn = () => {
     if (!validateForm()) return;
 
     try {
-      const { data } = await axios.post("http://127.0.0.1:7000/api/v1/user/login", { email, password });
+      const { data } = await axios.post(`${BASE_URL}/api/v1/user/login`, { email, password });
       if (data.success) {
         localStorage.setItem("token", data.token);
         dispatch(login());

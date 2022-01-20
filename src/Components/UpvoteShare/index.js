@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { loginToVote, logout, sessionExpired } from "../../REDUX/Site/ActionCreator";
 import { fetchBlogById } from "../../REDUX/Blogs/ActionCreator";
+import BASE_URL from "../../Utilities/API";
 
 const UpvoteShare = () => {
   const { isAuthenticated } = useSelector((state) => state.site);
@@ -29,7 +30,7 @@ const UpvoteShare = () => {
       const {
         data: { count },
       } = await axios.put(
-        "http://127.0.0.1:7000/api/v1/user/vote",
+        `${BASE_URL}/api/v1/user/vote`,
         { blogId: post.id },
         {
           headers: {
@@ -42,7 +43,7 @@ const UpvoteShare = () => {
       const {
         data: { success },
       } = await axios.put(
-        `http://127.0.0.1:7000/api/v1/blogs/vote/${post.id}`,
+        `${BASE_URL}/api/v1/blogs/vote/${post.id}`,
         { count },
         {
           headers: {

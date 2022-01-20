@@ -1,12 +1,11 @@
 import axios from "axios";
 import ACTION_TYPES from "./ActionTypes";
 import { logout, sessionExpired } from "../Site/ActionCreator";
+import BASE_URL from "../../Utilities/API";
 
 export const fetchBlogs = () => {
   return async (dispatch) => {
-    // const url = "http://127.0.0.1/api/v1/blogs";
-    const url = "https://shivi-blog-node.herokuapp.com:7000/api/v1/blogs";
-
+    const url = `${BASE_URL}/api/v1/blogs`;
     try {
       const {
         data: {
@@ -25,7 +24,7 @@ export const fetchBlogs = () => {
 
 export const fetchBlogById = (id) => {
   return async (dispatch) => {
-    const url = `http://127.0.0.1:7000/api/v1/blogs/${id}`;
+    const url = `${BASE_URL}/api/v1/blogs/${id}`;
 
     try {
       const {
@@ -44,7 +43,7 @@ export const fetchBlogById = (id) => {
 
 export const fetchUserById = (id) => {
   return async (dispatch) => {
-    const url = `http://127.0.0.1:7000/api/v1/user/${id}`;
+    const url = `${BASE_URL}/api/v1/user/${id}`;
 
     try {
       const {
@@ -63,7 +62,7 @@ export const fetchUserById = (id) => {
 
 export const fetchLoggedInUser = () => {
   return async (dispatch) => {
-    const url = "http://127.0.0.1:7000/api/v1/user/";
+    const url = `${BASE_URL}/api/v1/user/`;
     const token = localStorage.getItem("token");
 
     try {
@@ -86,7 +85,7 @@ export const fetchLoggedInUser = () => {
 
 export const fetchLatestByUserId = (id) => {
   return async (dispatch) => {
-    const url = `http://127.0.0.1:7000/api/v1/blogs/latest/${id}`;
+    const url = `${BASE_URL}/api/v1/blogs/latest/${id}`;
 
     try {
       const {
@@ -102,7 +101,7 @@ export const fetchLatestByUserId = (id) => {
 
 export const fetchLatestByUser = () => {
   return async (dispatch) => {
-    const url = `http://127.0.0.1:7000/api/v1/blogs/latest/`;
+    const url = `${BASE_URL}/api/v1/blogs/latest/`;
     const token = localStorage.getItem("token");
 
     try {

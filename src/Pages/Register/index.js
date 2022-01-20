@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BASE_URL from "../../Utilities/API";
 import style from "./style.module.css";
 
 const Register = () => {
@@ -138,13 +139,13 @@ const Register = () => {
     }
 
     try {
-      await axios.get("http://127.0.0.1:7000/api/v1/user/verify/username", {
+      await axios.get(`${BASE_URL}/api/v1/user/verify/username`, {
         params: {
           username: userName,
         },
       });
 
-      await axios.get("http://127.0.0.1:7000/api/v1/user/verify/email", {
+      await axios.get(`${BASE_URL}/api/v1/user/verify/email`, {
         params: {
           email,
         },
@@ -169,7 +170,7 @@ const Register = () => {
     try {
       const {
         data: { success },
-      } = await axios.post("http://127.0.0.1:7000/api/v1/user/register", newUser, { headers: { "Content-Type": "application/json" } });
+      } = await axios.post(`${BASE_URL}/api/v1/user/register`, newUser, { headers: { "Content-Type": "application/json" } });
 
       if (success) {
         setFormSuccess("Registered Successfully");

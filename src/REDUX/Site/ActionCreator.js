@@ -1,4 +1,5 @@
 import axios from "axios";
+import BASE_URL from "../../Utilities/API";
 import ACTION_TYPES from "./ActionTypes";
 
 export const sessionExpired = () => {
@@ -20,7 +21,7 @@ export const setMediaMatch = (mediaMatches) => ({ type: ACTION_TYPES.SET_MEDIA, 
 
 export const verifyToken = () => {
   return async (dispatch) => {
-    const url = "http://127.0.0.1:7000/api/v1/user/verify/token";
+    const url = `${BASE_URL}/api/v1/user/verify/token`;
     const token = localStorage.getItem("token");
 
     try {
