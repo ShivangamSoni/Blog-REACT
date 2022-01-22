@@ -22,6 +22,26 @@ export const fetchBlogs = () => {
   };
 };
 
+export const fetchBlogByCategory = (category) => {
+  return async (dispatch) => {
+    const url = `${BASE_URL}/api/v1/blogs/category/${category}`;
+
+    try {
+      const {
+        data: {
+          data: { blogs: categoryBlogs },
+        },
+      } = await axios.get(url);
+
+      if (Array.isArray(categoryBlogs)) {
+        dispatch({ type: ACTION_TYPES.STORE_CATEGORY_BLOGS, payload: { categoryBlogs } });
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+};
+
 export const fetchBlogById = (id) => {
   return async (dispatch) => {
     const url = `${BASE_URL}/api/v1/blogs/${id}`;

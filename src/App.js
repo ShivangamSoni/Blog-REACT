@@ -12,7 +12,7 @@ import NotFound from "./Pages/NotFound";
 import SignIn from "./Pages/Signin";
 import Register from "./Pages/Register";
 import Profile from "./Pages/Profile";
-import Write from "./Pages/Write";
+// import Write from "./Pages/Write";
 // Utilities
 import AuthRoute from "./Routes/AuthRoute";
 import UnAuthRoute from "./Routes/UnAuthRoute";
@@ -87,14 +87,14 @@ function App() {
 
         <Route path="/profile/:authorId" element={<Profile />} />
 
-        <Route
+        {/* <Route
           path="/write"
           element={
             <AuthRoute>
               <Write />
             </AuthRoute>
           }
-        />
+        /> */}
 
         <Route path="/not-found" element={<NotFound />} />
 
