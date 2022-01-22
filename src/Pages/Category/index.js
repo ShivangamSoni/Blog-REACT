@@ -12,7 +12,7 @@ const Category = () => {
 
   useEffect(() => {
     dispatch(fetchBlogByCategory(category));
-  });
+  }, [category, dispatch]);
 
   const {
     categoryPosts,

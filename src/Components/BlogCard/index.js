@@ -13,7 +13,7 @@ const BlogCard = (props) => {
     <div className={propStyle?.blogCard || style.blogCard} data-id={i}>
       {displayImage ? (
         <div className={propStyle?.blogImage || style.blogImage}>
-          <img src={image.src} alt={image.content} />
+          <img src={image.src} alt={image.content} loading="lazy" />
         </div>
       ) : null}
 
